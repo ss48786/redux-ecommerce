@@ -25,7 +25,7 @@ import types from './src/redux/types';
 
 
 
-
+const {dispatch}=store;
 
 class App extends Component {
 

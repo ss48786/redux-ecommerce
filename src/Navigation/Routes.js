@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 function Routes(props) {
   const { isLoggedin, data } = props;
 
-  console.log("ROUTES---------------" , data)
+  console.log("ROUTES----------------------------------" , data)
   return (
     <NavigationContainer>
       <Stack.Navigator>
