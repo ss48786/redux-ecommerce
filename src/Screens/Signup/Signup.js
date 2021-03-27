@@ -75,7 +75,7 @@ export default class Signup extends Component {
 
     actions.onSendOTP(dataSend)
       .then(response => {
-        console.log(response) ;
+        console.log("response at signup page",response) ;
 
         this.props.navigation.navigate(navigationString.LOGIN , {data:response.data.userId })
         showMessage({

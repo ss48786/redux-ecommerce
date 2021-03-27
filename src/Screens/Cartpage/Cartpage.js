@@ -17,12 +17,14 @@ import Button from "../../Components/Button";
 import Textinput from "../../Components/Textinput";
 import navigationString from "../../constants/navigationString";
 import store from "../../redux/store";
+import { connect } from "react-redux";
 
 
 
 
 
-export default class Cartpage extends Component {
+
+ class Cartpage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,27 +40,35 @@ export default class Cartpage extends Component {
 
   
   render() {
-    const {myarray}=store.getState();
+    // const {myarray}=store.getState();
 
-    console.log("idhr agya" , myarray) ;
+    // console.log("idhr agya" , myarray) ;
 
-    const unsubscribe = store.subscribe(()=>this.setState({}))
+    // const unsubscribe = store.subscribe(()=>this.setState({}))
+    const {myarray=[]} = this.props;
   
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        {/* <View>
-            <Image source ={myarray[0].image}
-            /> 
-        </View> */}
         <View>
+            <Image source ={myarray[0].image} style={styles.card}
+            /> 
+        </View>
+        {/* <View>
           <Text>
             cartpageeeeeee
           </Text>
-        </View>
+        </View> */}
       </SafeAreaView>
     );
   }
 }
+const mapStateToProps = state =>{
+  return{
+myarray:state.reducer.myarray
+  }
+}
+
+export default connect(mapStateToProps)(Cartpage);
 
 const styles = StyleSheet.create({
   loginScreen: {
@@ -116,5 +126,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     margin: 10,
+  },
+  card: {
+    height: 300,
+    width: 160,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
   },
 });

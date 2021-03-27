@@ -12,7 +12,7 @@ import {
 import colors from "../styles/colors";
 
 export default function Textinput(props) {
-    const { style, placeholder, onChangeText} = props;
+    const { style, placeholder, onChangeText, number} = props;
  
   return (
    <View>

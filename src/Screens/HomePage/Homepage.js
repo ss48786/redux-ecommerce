@@ -14,7 +14,7 @@ import {
 import imagePath from "../../constants/imagePath";
   import navigationStrings from "../../constants/navigationString";
 
-import {Details,Cart} from '../../redux/reducers/action';
+// import {Details,Cart} from '../../redux/reducers/reducer';
 import navigationString from "../../constants/navigationString";
 import Cartpage from "../Cartpage/Cartpage";
 import { connect } from "react-redux";
@@ -223,18 +223,24 @@ const{dispatch} =store;
 
   //  }
 
-  //  test=(id)=>{
-  //   this.props.navigation.navigate(navigationString.CARTPAGE);
-  //   const{productsArray} = this.state;
-  //   let cartarray =[...productsArray];
-  //   // alert(JSON.stringify(cartarray[id]));
-  //   let index = cartarray.findIndex((item)=>item.id===id);
-  //   store.dispatch(Cart(cartarray , index));
-  //   // store.dispatch(Cart());
+   test=(id)=>{
+    this.props.navigation.navigate(navigationString.CARTPAGE);
+    const{productsArray} = this.state;
+    let cartarray =[...productsArray];
+    // alert(JSON.stringify(cartarray[id]));
+    let index = cartarray.findIndex((item)=>item.id===id);
+    // store.dispatch(Cart(cartarray , index));
+dispatch({
+  type:types.CART,
+  payload:{cartarray,index}
+
+})
+
+    // store.dispatch(Cart());
 
 
   
-  //  }
+   }
     renderItem = ({item}) => {
       
       return (
@@ -277,7 +283,10 @@ const{dispatch} =store;
           <View>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
           <Image style={styles.imageStyle} source={imagePath.m1} />
-          <Image style={styles.imageStyle} source={imagePath.dp1} />
+          <Image style={{height: 25,
+      width: 100,
+      marginBottom: 20,
+      margin: 10,}} source={imagePath.dp1} />
 
           <View style={{ flexDirection: "row" }}>
             <Image style={styles.imageStyle} source={imagePath.m2} />

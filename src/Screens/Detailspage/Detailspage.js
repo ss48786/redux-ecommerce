@@ -42,7 +42,7 @@ const{dispatch} = store;
       
     return (
       <View style={{flex:1}}>
-        <Text>hvhv</Text>
+       
  
       <View style={{ justifyContent: "space-between", margin: 10 }}>
         {/* <Image style={styles.card} source={item.image} /> */}
@@ -92,12 +92,13 @@ const{dispatch} = store;
 
 const mapStateToProps = state =>{
   return{
-    newObj:state.newObj
+    newObj:state.reducer.newObj
   }
 
   }
 
   export default connect(mapStateToProps)(Detailspage);
+
   
 
 const styles = StyleSheet.create({

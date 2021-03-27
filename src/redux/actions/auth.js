@@ -1,5 +1,5 @@
 
-import { LOGIN_OTP , VERIFY_OTP  } from '../../config/url';
+import { LOGIN_OTP , VERIFY_OTP , USER_SEARCH } from '../../config/url';
 
 import { apiDelete, apiGet, apiPost, apiPut, setUserData } from '../../utils/Utils';
 import store from '../store';
@@ -56,6 +56,43 @@ export function login(data = {}) {
         })
       })
        resolve(res);
+
+     }).catch(error=>{
+       reject(error);
+     })
+   })
+  }
+
+  // export function OnUserSearch(data = {}) {
+  
+  //   return new Promise((resolve,reject) => {
+  //     apiPost(USER_SEARCH,data).then(res=>{
+  //      setUserData(res.data).then(suc => {
+  //        dispatch({
+  //          type:types.LOGGED_IN ,
+  //          payload:res.data
+  //        })
+  //      })
+  //       resolve(res);
+ 
+  //     }).catch(error=>{
+  //       reject(error);
+  //     })
+  //   })
+  //  }
+
+  export function OnUserSearch(data = {},headers={}) {
+    
+   return new Promise((resolve,reject) => {
+     apiPost(USER_SEARCH,data,headers).then(res=>{
+    
+      setUserData(res.data).then(suc => {
+        dispatch({
+          type:types.DATASEARCH ,
+          payload:res.data
+        })
+      })
+      resolve(res);
 
      }).catch(error=>{
        reject(error);

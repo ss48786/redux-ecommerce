@@ -29,7 +29,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+number:"12345"
     };
   }
 
@@ -38,10 +38,13 @@ export default class Login extends Component {
 
 
     const { data } = this.props.route.params;
+    const {number} =this.state;
+    
 
     let dataSend = {
       userId: data,
-      otp: "12345",
+      otp:number,
+     
       deviceToken: "123",
       registerFrom: "ANDROID"
     }
@@ -50,9 +53,9 @@ export default class Login extends Component {
 
     actions.onVerifyOTP(dataSend)
       .then(response => {
-        console.log(response);
+        console.log( " data at login page",response);
 
-        this.props.navigation.navigate(navigationString.TAB_ROUTES);
+        // this.props.navigation.navigate(navigationString.TAB_ROUTES);
         showMessage({
           type: "success",
           icon: "success",
@@ -68,6 +71,14 @@ export default class Login extends Component {
 
   };
 
+onchangename(key){
+
+  return(value)=>{
+    this.setState({
+      [key]: value
+    })
+  }
+}
 
   render() {
 
@@ -82,11 +93,12 @@ export default class Login extends Component {
           <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
             <Text style={{ fontSize: 40 }}>OTP verification</Text>
           </View>
-          <View style={{ flexDirection: 'row', marginLeft: 30 }}>
-            <Textinput />
-            <Textinput />
-            <Textinput />
-            <Textinput />
+          <View>
+            <Textinput onchangetext={(text)=> this.setState({
+              number:text
+            })}/>
+            {/* handleTextChange={(text) => this.setState({otpInput: text})} */}
+           
           </View>
           <View style={{ margin: 20, marginTop: 50 }}>
             <Text>Enter the OTP sent to your registered email and phone number</Text>

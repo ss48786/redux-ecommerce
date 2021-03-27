@@ -3,4 +3,5 @@ export default {
     CART:'Cart',
     UPDATE:'UPDATE',
     LOGGED_IN:'isloggedin' ,
+    DATASEARCH:'DataSearch'
 }

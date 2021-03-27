@@ -8,7 +8,10 @@ const INITIAL_STATE = {
   selecteditem: '',
   count: 0,
   isLoggedin: false,
-  userData: {}
+  userData: {},
+  infinitearray:[]
+
+
 };
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -20,24 +23,29 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case types.CART:
       const { cartarray, index } = action.payload;
-      // alert(JSON.stringify(cartarray[index]))
+      //  alert(JSON.stringify(cartarray[index]))
 
       if (!state.myarray.includes(cartarray[index])) {
         var status = [...state.myarray, cartarray[index]];
       }
-      // alert(JSON.stringify(status))
+      //  alert(JSON.stringify(status))
       return {
         ...state,
         myarray: [...status]
+        
       };
-
-    case types.EDIT:
+    
+    case types.DATASEARCH:
+      const data = [...action.payload]
+     console.log("reducer got it",data)
       return {
-        ...state, count: state.count - 1,
+        ...state, infinitearray: data
+  
       };
 
     case types.LOGGED_IN:
       const userData = { ...action.payload };
+
       return { ...state, userData, isLoggedin: true };
 
     default: return state;
