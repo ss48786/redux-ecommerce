@@ -6,6 +6,7 @@ import Entypo from "react-native-vector-icons/Entypo";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Homepage from "../Screens/HomePage/Homepage";
 import Latestdeals from "../Screens/LatestDeals/Latestdeals";
+import Profile from "../Screens/Profile/Profile";
 
 
 
@@ -29,6 +30,16 @@ function TabRoutes() {
           component={Latestdeals}
           options={{
             tabBarLabel: "Deals",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="local-offer" color={color} size={size} />
+            ),
+          }}
+        />
+         <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="local-offer" color={color} size={size} />
             ),

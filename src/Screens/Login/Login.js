@@ -94,7 +94,9 @@ onchangename(key){
             <Text style={{ fontSize: 40 }}>OTP verification</Text>
           </View>
           <View>
-            <Textinput onchangetext={(text)=> this.setState({
+            <Textinput
+            placeholder="Enter otp"
+            onchangetext={(text)=> this.setState({
               number:text
             })}/>
             {/* handleTextChange={(text) => this.setState({otpInput: text})} */}

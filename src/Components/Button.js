@@ -10,13 +10,13 @@ import {
 } from "react-native";
 
 export default function Formbutton(props) {
-  const { onButtonPress,  buttonName, text,mytext,style,name,TotalPrice ,textbtn} = props;
+  const { onButtonPress,  buttonName, text,mytext,style,name,TotalPrice ,textbtn,styleofprofilebutton} = props;
   let check=false;
   return (
     <View style={styles.textInput}>
       <TouchableOpacity
         onPress={onButtonPress}
-        style={[styles.buttonStyle, style]}
+        style={[styles.buttonStyle, style, styleofprofilebutton]}
       >
         <Text style={[styles.text,textbtn]}>{buttonName}  </Text>
       

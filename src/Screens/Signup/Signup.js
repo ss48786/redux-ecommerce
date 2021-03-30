@@ -136,7 +136,7 @@ export default class Signup extends Component {
         </View>
         <View style={{ flexDirection: 'row', margin: 20 }}>
           <Text> By signing up you agree to our </Text>
-          <Text style={{ color: colors.textcolor }}>Terms & Conditions</Text>
+          <Text style={{ color: colors.textatsignup }}>Terms & Conditions</Text>
 
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -154,7 +154,7 @@ export default class Signup extends Component {
         <View style={{ flexDirection: "row", justifyContent: 'center' }}>
           <Text>Already have an account ?</Text>
           <TouchableOpacity onPress={this.isValidlogin}>
-            <Text style={{ color: colors.textcolor, marginLeft: 10 }}>Log In</Text>
+            <Text style={{ color: colors.textatsignup, marginLeft: 10 }}>Log In</Text>
           </TouchableOpacity>
         </View>
 

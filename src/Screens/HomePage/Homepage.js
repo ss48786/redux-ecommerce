@@ -19,7 +19,16 @@ import navigationString from "../../constants/navigationString";
 import Cartpage from "../Cartpage/Cartpage";
 import { connect } from "react-redux";
 import store from "../../redux/store";
-import types from "../../redux/types"
+import types from "../../redux/types";
+import colors from "../../styles/colors";
+import Textinput from "../../Components/Textinput";
+import fontfamily from "../../styles/fontFamily"
+import Header from "../../Components/Header";
+
+
+
+
+
 
 const{dispatch} =store;
 
@@ -35,7 +44,7 @@ const{dispatch} =store;
           id: 0,
           name: "RED TAPE",
           text: "Checked Tshirt",
-          image: imagePath.dp2,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -57,7 +66,7 @@ const{dispatch} =store;
           id: 2,
           name: "RED TAPE",
           text: "Checked Tshirt",
-          image: imagePath.dp4,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -68,7 +77,7 @@ const{dispatch} =store;
           id: 3,
           name: "RED TAPE",
           text: "Checked Tshirt",
-          image: imagePath.dp5,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -79,7 +88,7 @@ const{dispatch} =store;
           id: 4,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp6,
+          image: imagePath.dp3,
           Price: 2599,
           reducedPrice: "Rs 650",
           discount: "75%",
@@ -89,7 +98,7 @@ const{dispatch} =store;
           id: 5,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp7,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -100,7 +109,7 @@ const{dispatch} =store;
           id: 6,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp8,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -111,7 +120,7 @@ const{dispatch} =store;
           id: 7,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp9,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -122,7 +131,7 @@ const{dispatch} =store;
           id: 8,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp10,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -133,7 +142,7 @@ const{dispatch} =store;
           id: 9,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp9,
+          image: imagePath.dp3,
       
           Price: 2599,
           reducedPrice: "Rs 650",
@@ -144,8 +153,7 @@ const{dispatch} =store;
           id: 10,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp8,
-      
+          image: imagePath.dp3,
           Price: 2599,
           reducedPrice: "Rs 650",
           discount: "75%",
@@ -155,7 +163,7 @@ const{dispatch} =store;
           id: 11,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp7,
+          image: imagePath.dp3,
           Price: 2599,
           reducedPrice: "Rs 650",
           discount: "75%",
@@ -165,7 +173,7 @@ const{dispatch} =store;
           id: 12,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp6,
+          image: imagePath.dp3,
           Price: 2599,
           reducedPrice: "Rs 650",
           discount: "75%",
@@ -175,12 +183,13 @@ const{dispatch} =store;
           id: 13,
           name: "RED TAPE",
           text: "Checked shirt",
-          image: imagePath.dp5,
+          image: imagePath.dp3,
           Price: 2599,
           reducedPrice: "Rs 650",
           discount: "75%",
           quant: 1,
         }],
+        count:0,
         
     };
       };
@@ -224,23 +233,27 @@ const{dispatch} =store;
   //  }
 
    test=(id)=>{
-    this.props.navigation.navigate(navigationString.CARTPAGE);
-    const{productsArray} = this.state;
+    // this.props.navigation.navigate(navigationString.CARTPAGE);
+    const{productsArray,count} = this.state;
     let cartarray =[...productsArray];
     // alert(JSON.stringify(cartarray[id]));
     let index = cartarray.findIndex((item)=>item.id===id);
     // store.dispatch(Cart(cartarray , index));
+    this.setState({
+      count:count+1
+    })
 dispatch({
   type:types.CART,
   payload:{cartarray,index}
 
 })
 
-    // store.dispatch(Cart());
-
-
-  
    }
+   MyCheckCart=()=>{
+   
+     this.props.navigation.navigate(navigationStrings.CARTPAGE);
+  
+  }
     renderItem = ({item}) => {
       
       return (
@@ -253,11 +266,11 @@ dispatch({
   </TouchableOpacity>
         <View>
           
-     <Text style={{  fontWeight: "bold", marginLeft:40 }}>
+     <Text style={{ fontWeight:'bold', marginLeft:40 }}>
               {item.Price}
             </Text>
           <TouchableOpacity style={styles.buttonStyle} onPress={()=>this.test(item.id)}>
-            <Text style={{ color: "#e3e3e3", fontWeight: "bold" }}>
+            <Text style={{ color: colors.textcolor,fontWeight:'bold'}}>
               Click to Buy
             </Text>
   
@@ -289,36 +302,28 @@ dispatch({
       margin: 10,}} source={imagePath.dp1} />
 
           <View style={{ flexDirection: "row" }}>
-            <Image style={styles.imageStyle} source={imagePath.m2} />
-            <Image style={styles.imageStyle} source={imagePath.m3} />
-            <Image style={styles.imageStyle} source={imagePath.m4} />
-            <TouchableOpacity onPress={this.checkCart}>
+           
+            <TouchableOpacity onPress={()=>this.MyCheckCart()}>
               <Image style={styles.imageStyle} source={imagePath.m5} />
             </TouchableOpacity>
             <Text
               style={{
-                color: "#f2288c",
+                color: colors.themecolor,
                 marginLeft: -8,
                 marginTop: 2,
                 marginRight: 3,
               }}
             >
-           
+           {count}
             </Text>
           </View>
         </View>
-
-        <ScrollView horizontal={true}>
-          <View style={{ flexDirection: "row" }}>
-            <Image style={styles.myimage} source={imagePath.r1} />
-            <Image style={styles.myimage} source={imagePath.r2} />
-            <Image style={styles.myimage} source={imagePath.r3} />
-            <Image style={styles.myimage} source={imagePath.r4} />
-            <Image style={styles.myimage} source={imagePath.r5} />
-            <Image style={styles.myimage} source={imagePath.r6} />
-            <Image style={styles.myimage} source={imagePath.r7} />
-          </View>
-        </ScrollView>
+        <Textinput styleofhomepageinputtext={{borderBottomColor:colors.themecolor , 
+    borderTopColor:colors.themecolor, 
+   borderLeftColor:colors.themecolor,
+    borderRightColor:colors.themecolor}} placeholder="Search for products and brands"/>
+{/* <Header/> */}
+       
 
         <ScrollView>
           <TouchableOpacity >
@@ -384,14 +389,14 @@ dispatch({
     orThing: {
       flexDirection: "row",
     },
-    buttonStyle: {
-      borderWidth: 1,
-      padding: 15,
-      width: 250,
-      borderRadius: 8,
-      flexDirection: "row",
-      justifyContent: "space-around",
-    },
+    // buttonStyle: {
+    //   borderWidth: 1,
+    //   padding: 15,
+    //   width: 250,
+    //   borderRadius: 8,
+    //   flexDirection: "row",
+    //   justifyContent: "space-around",
+    // },
     fbbuttonStyle: {
       borderWidth: 1,
       padding: 15,
@@ -454,9 +459,11 @@ dispatch({
       borderBottomLeftRadius: 10,
       borderTopRightRadius: 10,
       borderBottomRightRadius: 10,
+    overflow:'hidden'
+     
     },
     buttonStyle: {
-      backgroundColor: "#f2288c",
+      backgroundColor: colors.themeColor,
       padding: 10,
       width: 100,
       borderRadius: 8,
@@ -465,5 +472,8 @@ dispatch({
      marginLeft:40,
      marginTop:10
     },
+    styleofhomepageinputtext:{
+
+    }
   });
   

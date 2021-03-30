@@ -23,12 +23,13 @@ const reducer = (state = INITIAL_STATE, action) => {
 
     case types.CART:
       const { cartarray, index } = action.payload;
-      //  alert(JSON.stringify(cartarray[index]))
+      // alert(JSON.stringify(cartarray[index]))
 
       if (!state.myarray.includes(cartarray[index])) {
         var status = [...state.myarray, cartarray[index]];
+        cartarray[index].quantity+=1
       }
-      //  alert(JSON.stringify(status))
+       alert(JSON.stringify(status))
       return {
         ...state,
         myarray: [...status]
@@ -40,6 +41,7 @@ const reducer = (state = INITIAL_STATE, action) => {
      console.log("reducer got it",data)
       return {
         ...state, infinitearray: data
+        // infinitearray:[...state.infinitearray,...data]
   
       };
 

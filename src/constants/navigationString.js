@@ -5,7 +5,8 @@ export default {
     HOMEPAGE:'Homepage',
     LATESTDEALS:'Latestdeals',
     DETAILSPAGE:'Detailspage',
-    CARTPAGE:'Cartpage'
+    CARTPAGE:'Cartpage',
+    PROFILE:'Profile'
     
    
    

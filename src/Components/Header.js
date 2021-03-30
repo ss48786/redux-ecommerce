@@ -1,86 +1,85 @@
-import React from 'react';
-import {Text, View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
-import fontFamily from '../styles/fontFamily';
-import colors from '../styles/colors';
+import React from "react";
+
 import {
-  textScale,
-  moderateScale,
-  moderateScaleVertical,
-} from '../styles/responsiveSize';
-import imagePath from '../constants/imagePath';
-import {useNavigation} from '@react-navigation/native';
-import {hitSlopProp} from '../styles/commonStyles';
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput
+  
+} from "react-native";
+import { connect } from "react-redux";
+import imagePath from "../constants/imagePath";
+import store from "../redux/store";
+import colors from "../styles/colors";
+import Textinput from "./Textinput";
 
-const Header = ({
-  leftIcon = imagePath.back,
-  centerTitle,
-  textStyle,
-  horizontLine = true,
-  rightIcon = '',
-  onPressLeft,
-  onPressRight,
-  customRight,
-  hideRight=true
-}) => {
-  const navigation = useNavigation();
+
+
+
+ function Header(props) {
+    const { style, placeholder, onChangeText, number,styleofhomepageinputtext,checkCart} = props;
+ 
   return (
-    <>
-      <View
-        style={{
-          ...styles.headerStyle,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
-          <View style={{alignItems:'flex-start',minWidth:moderateScale(72)}}>
-        <TouchableOpacity
-          hitSlop={hitSlopProp}
-          activeOpacity={0.7}
-          onPress={
-            !!onPressLeft
-              ? onPressLeft
-              : () => {
-                  navigation.goBack();
-                }
-          }>
-          <Image resizeMode="contain" source={leftIcon} />
-        </TouchableOpacity>
+   <View>
+       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <Image style={styles.imageStyle} source={imagePath.m1} />
+          <Image style={{height: 25,
+      width: 100,
+      marginBottom: 20,
+      margin: 10,}} source={imagePath.dp1} />
+
+          <View style={{ flexDirection: "row" }}>
+           
+            {/* <TouchableOpacity onPress={this.checkCart}>
+              <Image style={styles.imageStyle} source={imagePath.m5} />
+            </TouchableOpacity> */}
+             <TouchableOpacity>
+              <Image style={styles.imageStyle} source={imagePath.m5} />
+            </TouchableOpacity>
+            {/* <Text
+              style={{
+                color: colors.themecolor,
+                marginLeft: -8,
+                marginTop: 2,
+                marginRight: 3,
+              }}
+            >
+           {count}
+            </Text> */}
+          </View>
         </View>
-        <Text
-          style={{
-            ...styles.textStyle,
-            ...textStyle,
-            width: moderateScale(150),
-          }}>
-          {centerTitle}
-        </Text>
-        <View style={{alignItems:'flex-end',minWidth:moderateScale(72)}}>
-        {!!rightIcon ? (
-          <TouchableOpacity onPress={onPressRight}>
-            <Image source={rightIcon} />
-          </TouchableOpacity>
-        ) : !!customRight ? (
-          customRight()
-        ) : (
-         hideRight? <View style={{width: 25}} />:<Image source={imagePath.cartShop}/>
-        )}
-        </View>
-      </View>
-    </>
+        <Textinput styleofhomepageinputtext={{borderBottomColor:colors.themecolor , 
+    borderTopColor:colors.themecolor, 
+   borderLeftColor:colors.themecolor,
+    borderRightColor:colors.themecolor}} placeholder="Search for products and brands"/>
+   </View>
   );
-};
-export default Header;
+}
+const mapStateToProps=state=>{
+  return{
+    newAry:state.newAry
+  }
+
+  }
+export default connect(mapStateToProps)(Header);
+
 const styles = StyleSheet.create({
-  headerStyle: {
-    padding: moderateScaleVertical(16),
+   textinput:{ borderWidth:1, 
+   borderBottomColor:colors.themecolor , 
+    borderTopColor:'white', 
+   borderLeftColor:'white',
+    borderRightColor:'white',
+    margin:20,
+
+   },
+   imageStyle: {
+    height: 25,
+    width: 25,
+    marginBottom: 20,
+    margin: 10,
   },
 
-  textStyle: {
-    color: colors.black2Color,
-    fontSize: textScale(17),
-    lineHeight: textScale(28),
-    textAlign: 'center',
-    fontFamily: fontFamily.futuraBtHeavy,
-  },
 });

@@ -19,6 +19,8 @@ import Textinput from "../../Components/Textinput";
 import { types } from "@babel/core";
 import { connect } from "react-redux";
 import store from "../../redux/store";
+import Header from "../../Components/Header";
+
 
 const{dispatch} = store;
 
@@ -43,7 +45,7 @@ const{dispatch} = store;
     return (
       <View style={{flex:1}}>
        
- 
+
       <View style={{ justifyContent: "space-between", margin: 10 }}>
         {/* <Image style={styles.card} source={item.image} /> */}
       </View>
@@ -75,6 +77,7 @@ const{dispatch} = store;
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <View>
+<Header/>
         <Image style={styles.card} source={newObj.image} />
         <FlatList
             data={newObj} 
