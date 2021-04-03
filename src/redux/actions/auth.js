@@ -1,5 +1,6 @@
 
-import { LOGIN_OTP , VERIFY_OTP , USER_SEARCH } from '../../config/url';
+import { reject } from 'lodash';
+import { LOGIN_OTP , VERIFY_OTP , USER_SEARCH, USER_NEAR_ME,USER_LOCATION } from '../../config/url';
 
 import { apiDelete, apiGet, apiPost, apiPut, setUserData } from '../../utils/Utils';
 import store from '../store';
@@ -86,12 +87,12 @@ export function login(data = {}) {
    return new Promise((resolve,reject) => {
      apiPost(USER_SEARCH,data,headers).then(res=>{
     
-      setUserData(res.data).then(suc => {
+      
         dispatch({
           type:types.DATASEARCH ,
           payload:res.data
         })
-      })
+      
       resolve(res);
 
      }).catch(error=>{
@@ -99,3 +100,18 @@ export function login(data = {}) {
      })
    })
   }
+
+
+  export function OnNearUser(value , headers={}) {
+
+      return apiGet(USER_NEAR_ME+value , headers )
+    
+    
+   }
+
+   export function OnUserLocation(lat,long) {
+let query=`?coordinates=[${long},${lat}]`;
+    return apiGet(USER_LOCATION +query)
+  
+  
+ }

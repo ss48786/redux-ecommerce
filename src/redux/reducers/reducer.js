@@ -9,7 +9,8 @@ const INITIAL_STATE = {
   count: 0,
   isLoggedin: false,
   userData: {},
-  infinitearray:[]
+  infinitearray:[],
+  data:[]
 
 
 };
@@ -36,12 +37,21 @@ const reducer = (state = INITIAL_STATE, action) => {
         
       };
     
+    // case types.DATASEARCH:
+    //   const data = [...action.payload]
+    //  console.log("reducer got it",data)
+    //   return {
+    //     ...state, infinitearray: data
+    //     //  infinitearray:[...state.infinitearray,data]
+  
+    //   };
+
     case types.DATASEARCH:
-      const data = [...action.payload]
-     console.log("reducer got it",data)
+      const data = [ ...state.infinitearray , ...action.payload ]
+     
       return {
         ...state, infinitearray: data
-        // infinitearray:[...state.infinitearray,...data]
+      
   
       };
 
@@ -51,6 +61,33 @@ const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, userData, isLoggedin: true };
 
     default: return state;
+
+
+    case types.COLOR:
+      const {colorarray} = action.payload;
+     
+      return {
+        ...state, colorarray
+      
+    
+      };
+
+
+      case types.NEARUSER:
+        const {usersearch} = action.payload;
+       
+        return {
+          ...state, usersearch
+        
+      
+        };
+
+
+
   }
+
+ 
 };
+
+
 export default reducer;

@@ -11,7 +11,7 @@ export async function getHeaders() {
     userData = JSON.parse(userData);
     console.log(userData.token, 'header');
     return {
-      authorization: `Bearer ${userData.token}`,
+      authorization: `Bearer ${userData.accessToken}`,
     };
   }
   return {};
@@ -67,9 +67,10 @@ export async function apiReq(
   return new Promise(async (res, rej) => {
     const getTokenHeader = await getHeaders();
     headers = {
-      // ...getTokenHeader,
+      ...getTokenHeader,
       ...headers,
     };
+    console.log(headers , "Sahil bhai") ;
     if (method === 'get' || method === 'delete') {
       data = {
         ...requestOptions,

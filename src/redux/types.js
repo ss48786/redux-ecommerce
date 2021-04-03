@@ -3,5 +3,8 @@ export default {
     CART:'Cart',
     UPDATE:'UPDATE',
     LOGGED_IN:'isloggedin' ,
-    DATASEARCH:'DataSearch'
+    DATASEARCH:'DataSearch',
+    COLOR:'Color',
+    NEARUSER:'NEARUSER'
+
 }

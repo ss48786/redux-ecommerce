@@ -9,6 +9,7 @@ import {
     TextInput,
     FlatList,
     TouchableOpacity,
+    RefreshControl
     
  
   } from "react-native";
@@ -22,14 +23,10 @@ import { connect } from "react-redux";
 import fontFamily from "../../styles/fontFamily";
 import colors from "../../styles/colors";
 import imagePath from "../../constants/imagePath";
-
- 
-
+import Textinput from "../../Components/Textinput";
 
 
 
-
- 
  class Latestdeals extends Component {
     constructor(props) {
       super(props);
@@ -37,7 +34,15 @@ import imagePath from "../../constants/imagePath";
        searchType:'',
        limit:'',
        skip:'',
-      iscorrect:true
+      iscorrect:true,
+      isloadingMore:false,
+      isNoMoreData:false,
+refreshing:false,
+profiles:[],
+islistEnd:false,
+refreshing:false,
+skipcount:0,
+username:'',
 
 
       };
@@ -45,21 +50,34 @@ import imagePath from "../../constants/imagePath";
     componentDidMount=()=>{
       this.Hit_API();
     }
-    // onEndReach=()=>{
-    //   this.Hit_API()
+    onEndReach=()=>{
+      const {isLoadingMore, isNoMoreData} = this.state;
+
+    if (isLoadingMore || isNoMoreData) {
+      return;
+    }
+    this.setState({isLoadingMore: true});
+    this.Hit_API(true);
       
-    // }
+    };
+
+    _onRefresh = () => {
+      this.setState({refreshing: false, isNoMoreData: false});
+      this.Hit_API();
+    };
+  
     
-  Hit_API=()=>{
-    const {searchType,limit, skip, iscorrect} = this.state;
+  Hit_API=(onEndReachCall=false)=>{
+    const {searchType,limit, skip, iscorrect,isNoMoreData,profiles,skipcount} = this.state;
       const {data,infinitearray} =this.props;
       console.log("COMPONENT DID MOUNT" , infinitearray) ;
+      let calculateSkip = onEndReachCall ? skip + profiles.length : 0;
       let dataSend = {  
        
 	
         searchType:"LEADERBOARD",
         limit:"10",
-        skip:"0"
+        skip:skipcount
         
       }
 
@@ -70,16 +88,34 @@ import imagePath from "../../constants/imagePath";
       }
       actions.OnUserSearch(dataSend,header)
         .then(response => {
-           console.log(response,"latestdeals")
+          //  console.log(response,"latestdeals")
           //  this.props.navigation.navigate(navigationString.LOGIN , {data:response.data.userId })
+        let updatedStatevar ={};
+        if (response.data.length >0) {
+          let profilesData = onEndReachCall ? [...infinitearray,...response.data] : response.data;
+          updatedStatevar={
+            profiles:profilesData
+          };
+        }
+        else {
+          updatedStatevar ={
+            islistEnd:true,
+            isNoMoreData:true
+          }
+        }
+       
           showMessage({
             type: "success",
             icon: "success",
             message: "API HITTED"
 
           })
+         
           this.setState({
-            iscorrect:false
+            ...updatedStatevar,
+            iscorrect:false,
+            isloadingMore:false,
+            skipcount:skipcount+5
           })
   
         }).catch(error => {
@@ -89,14 +125,25 @@ import imagePath from "../../constants/imagePath";
             message: Error
           })
           this.setState({
-            iscorrect:false
+            iscorrect:false,
+            isLoadingMore:false
           })
   
         });
   };
+
+
+
+  
+
+
+
+
+
+
     
   renderItem = ({item}) => {
-      console.log("RENDER ITEM" , item) ;
+      // console.log("RENDER ITEM" , item) ;
     
     return (
       <View>
@@ -122,7 +169,7 @@ import imagePath from "../../constants/imagePath";
   };
     render() {
       const {infinitearray}=this.props;
-      const{iscorrect} = this.state;
+      const{iscorrect,refreshing,username} = this.state;
 
       console.log("INFINITE ARRAY " , infinitearray ) ;
    
@@ -135,11 +182,21 @@ import imagePath from "../../constants/imagePath";
           <Text style={{fontWeight:'bold',marginTop:30,marginLeft:10}}>Abigael Abimaniya</Text>
           <Text style={{marginTop:10,marginLeft:10}}>Love, life and chill</Text>
           </View>
-
-          {/* <Image source={{
+          
+{/* 
+         <Image source={{
           uri:infinitearray[7].profileImg[0].original         
-        }} style={styles.dp}/> */}
+        }} style={styles.dp}/>  */}
           </View>
+<View style={{position:'relative'}}>
+          {/* <View>
+            <Textinput placeholder="Search for name" styleofsearch={styles.stylesearch} onChangeText={(text)=>this.setState({username:text})}/>
+          </View> */}
+          <View style={{position:'absolute',marginHorizontal:100}}>
+            <Image source={imagePath.search} style={{height:20,width:20}}/>
+          </View>
+          </View>
+
           <View style={{flexDirection:'row',justifyContent:'space-between'}}>
          
             <Text style={{marginLeft:10,fontWeight:'bold'}}>Category</Text>
@@ -174,14 +231,21 @@ import imagePath from "../../constants/imagePath";
          <Text style={{marginRight:10}}>See all</Text>
        </View>
           <FlatList
+          refreshControl={
+            <RefreshControl
+            refreshing={refreshing}
+            onRefresh={this._onRefresh}
+            />
+          }
             data={infinitearray} 
-            onEndReachedThreshold={1}
+            onEndReachedThreshold={0.8}
             showsVerticalScrollIndicator={false}
             numColumns={1}
             keyExtractor={(item) => item.id}
             ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
             renderItem={this.renderItem}
-            onEndReached={this.Hit_API}
+            onEndReached={this.onEndReach}
+            bounces={false}
          />  
           {/* <Text>{infinitearray[0].bio}</Text> */}
         <MyLoader iscorrect={iscorrect}/>
@@ -316,7 +380,14 @@ margin: 10,
       borderTopRightRadius: 10,
       borderBottomRightRadius: 10,
   marginRight:10
-      }
+      },
+      stylesearch:{
+        borderBottomColor:colors.themeColor , 
+
+        borderTopColor:colors.themeColor, 
+       borderLeftColor:colors.themeColor,
+        borderRightColor:colors.themeColor,
+      },
     
   });
   

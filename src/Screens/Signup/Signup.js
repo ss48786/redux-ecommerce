@@ -99,7 +99,7 @@ export default class Signup extends Component {
         <View style={styles.loginScreen}>
           <View style={{ flexDirection: 'row', marginBottom: 10 }}>
             <TouchableOpacity onPress={this.isValidlogin}>
-              <Text style={{ fontStyle: 'bold', fontSize: 30, marginLeft: 10 }}>Sign Up</Text>
+              <Text style={{ fontWeight: 'bold', fontSize: 30, marginLeft: 10 }}>Sign Up</Text>
             </TouchableOpacity>
             {/* <TouchableOpacity onPress={this.isValidlogin}>
           <Text style={{fontStyle:'bold', fontSize:30, marginLeft:10 }}>Sign Up</Text>

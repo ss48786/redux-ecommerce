@@ -19,6 +19,8 @@ import { Provider } from 'react-redux';
 import { getUserData } from './src/utils/Utils';
 import store from './src/redux/store';
 import types from './src/redux/types';
+import SplashScreen from 'react-native-splash-screen';
+
 
 
 
@@ -51,6 +53,8 @@ class App extends Component {
       }
     }
     )
+
+    SplashScreen.hide();
   }
 
   // componentDidMount() {

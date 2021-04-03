@@ -12,16 +12,18 @@ import {
     Modal,
     Pressable,
    
-   
-    
  
   } from "react-native";
 import imagePath from "../../constants/imagePath";
 import navigationString from "../../constants/navigationString";
-import Button from "../../Components/Button"
+import Button from "../../Components/Button";
+import types from "../../redux/types";
+import { connect } from "react-redux";
+
+
 
  
-export default class Profile extends Component{
+ class Profile extends Component{
     constructor(){
         super()
         this.state={
@@ -29,25 +31,27 @@ export default class Profile extends Component{
           mycolor:[
             {
               id:1,
-              type:'red',
-              color:'#ff0000'
+              type:'Red',
+              color:'red'
             },
             {
               id:2,
-              type:'blue',
+              type:'Blue',
               color:'#0026ff'
             },
             {
               id:3,
-              type:'green',
+              type:'Green',
               color:'#00ff2a'
             },
             {
               id:4,
-              type:'theme',
+              type:'Theme',
               color:'#36b6b0'
             }
-          ]
+          ],
+         
+          
         }
     }
     
@@ -57,11 +61,39 @@ export default class Profile extends Component{
     ModalClose = () => {
       this.setState({ modalVisible: false });
     }
+
+    Color_Array=(id)=>{
+  const {mycolor}= this.state;
+   let colorarray=[...mycolor]
+  dispatch({
+    type:types.COLOR,
+    payload:{colorarray}
+  })
+}
+
+
+
+
+
+
+
     renderItem = ({item}) => {
       
       return (
-        <View style={{backgroundColor:item.color}}>
-        
+        <View style={{flexDirection:'row',justifyContent:'center',marginRight:15,marginTop:5}}>
+       <TouchableOpacity style={{ width:120,
+    
+    padding:30,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    backgroundColor:item.color,
+     }} onPress={()=>this.Color_Array(item.id)}>
+         <Text style={{fontWeight:'bold'}}>{item.type}</Text>
+       </TouchableOpacity>
+       
+       
       </View>
       );
     };
@@ -73,7 +105,7 @@ render(){
         <View>
 <Image source={imagePath.profile} style={styles.profile}/>
         </View>
-        <View style={{ flexDirection: "row", justifyContent: "center", marginTop:30 }}>
+        <View style={{ flexDirection:'row',justifyContent:'center',marginTop:30 }}>
           <TouchableOpacity>
             <Image style={styles.cameraset} source={imagePath.camera}></Image>
           </TouchableOpacity>
@@ -89,13 +121,14 @@ render(){
         onRequestClose={()=>this.ModalClose()}
         visible={modalVisible}  
         >
-          <View style={{flexDirection:'row',justifyContent:'center'}}>
+          <View style={{flexDirection:'row',justifyContent:'center', marginTop:400,marginLeft:50,marginRight:50}}>
+            
           <FlatList
            data={mycolor} 
            showsVerticalScrollIndicator={false}
            numColumns={2}
            keyExtractor={(item) => item.id}
-           ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
+           ItemSeparatorComponent={() => <View style={{ margin:5}} />}
            renderItem={this.renderItem}
           />
           </View>
@@ -105,6 +138,15 @@ render(){
     )
 }
 }
+
+const mapStateToProps=state=>{
+  return{
+    newAry:state.colorarray
+  }
+
+  }
+export default connect(mapStateToProps)(Profile);
+
 const styles=StyleSheet.create({
     profile:{
 height:150,
@@ -132,4 +174,21 @@ marginTop:50
       buttonClose: {
         backgroundColor: "#2196F3",
       },
+      themebutton:{
+        width:120,
+    
+        padding:30,
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
+        
+      },
+      viewflatlisttheme:{
+        flexDirection: "row", 
+        justifyContent: "center",
+         marginTop:10,
+
+      }
+      
 })

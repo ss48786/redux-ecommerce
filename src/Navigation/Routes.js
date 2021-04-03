@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 function Routes(props) {
   const { isLoggedin, data } = props;
 
-  console.log("DATA ACCESS TOKEN jhgjhv----" , !!data.accessToken) ;
+   console.log("DATA ACCESS TOKEN jhgjhv----" , !!data.accessToken) ;
 
   console.log("ROUTES----------------------------------" , data)
   return (

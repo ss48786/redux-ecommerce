@@ -27,4 +27,6 @@ export default {
     profile: require("../assets/images/profile.png"),
     camera: require("../assets/images/camera.png"),
     gallery: require("../assets/images/gallery.png"),
+    // search: require("../assets/images/search.png"),
+    search: require("../assets/images/search.png"),
   };

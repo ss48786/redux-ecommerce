@@ -12,11 +12,11 @@ import {
 import colors from "../styles/colors";
 
 export default function Textinput(props) {
-    const { style, placeholder, onChangeText, number,styleofhomepageinputtext} = props;
+    const { style, placeholder, onChangeText, number,styleofhomepageinputtext,styleofsearch} = props;
  
   return (
    <View>
-       <TextInput style={[styles.textinput,styleofhomepageinputtext]}
+       <TextInput style={[styles.textinput,styleofhomepageinputtext,styleofsearch]}
      placeholder={placeholder}
      onChangeText={onChangeText}
        />
@@ -26,7 +26,8 @@ export default function Textinput(props) {
 
 const styles = StyleSheet.create({
    textinput:{ borderWidth:1, 
-   borderBottomColor:colors.themecolor , 
+    borderBottomColor:colors.themeColor , 
+
     borderTopColor:'white', 
    borderLeftColor:'white',
     borderRightColor:'white',

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "842075210783",
+    "project_id": "pushnotification-20b32",
+    "storage_bucket": "pushnotification-20b32.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842075210783:android:fa537315093df62a00012a",
+        "android_client_info": {
+          "package_name": "com.healthcart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842075210783-22ev6r78frmjpnhjm6d49bt3oec7b9ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr-f9WRLr-_OSftcP5XULMJ5Wsa1NeBso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842075210783-22ev6r78frmjpnhjm6d49bt3oec7b9ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

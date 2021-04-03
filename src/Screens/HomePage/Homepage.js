@@ -318,10 +318,10 @@ dispatch({
             </Text>
           </View>
         </View>
-        <Textinput styleofhomepageinputtext={{borderBottomColor:colors.themecolor , 
-    borderTopColor:colors.themecolor, 
-   borderLeftColor:colors.themecolor,
-    borderRightColor:colors.themecolor}} placeholder="Search for products and brands"/>
+        <Textinput styleofhomepageinputtext={{borderBottomColor:colors.themeColor , 
+    borderTopColor:colors.themeColor, 
+   borderLeftColor:colors.themeColor,
+    borderRightColor:colors.themeColor}} placeholder="Search for products and brands"/>
 {/* <Header/> */}
        
 
