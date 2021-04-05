@@ -47,10 +47,11 @@ const reducer = (state = INITIAL_STATE, action) => {
     //   };
 
     case types.DATASEARCH:
-      const data = [ ...state.infinitearray , ...action.payload ]
+      const data = [ ...state.infinitearray , ...action.payload ];
+      console.log("data at infinite array in reducer ",data)
      
       return {
-        ...state, infinitearray: data
+        ...state, infinitearray: [...data]
       
   
       };

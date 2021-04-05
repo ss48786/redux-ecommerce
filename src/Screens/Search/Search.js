@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, FlatList, TouchableOpacity, Image } from "react-native";
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView } from "react-native";
 import Textinput from "../../Components/Textinput";
 import actions from "../../redux/actions";
 import types from "../../redux/types";
@@ -10,7 +10,9 @@ import { showMessage, errorMessage } from "react-native-flash-message";
 import { color } from "react-native-reanimated";
 import imagePath from "../../constants/imagePath";
 import Geolocation from 'react-native-geolocation-service';
-import { locationPermission } from "../../utils/permission"
+import { locationPermission } from "../../utils/permission";
+import MyLoader from "../../Components/MyLoader"
+
 
 
 
@@ -24,14 +26,16 @@ export default class Search extends Component {
     this.state = {
       username: '',
       checkarray: '',
-      testarray: ''
+      testarray: '',
+      iscorrect: false,
+     
 
     }
 
   }
 
   User_Near = () => {
-    const { username } = this.state;
+    const { username, iscorrect } = this.state;
     const { usersearch, data } = this.props;
 
     console.log(username);
@@ -58,45 +62,46 @@ export default class Search extends Component {
 
         })
 
-        console.log(response, "at search page lets checj")
+        console.log(response, "THIS IS RESPONSE")
 
         this.setState({
 
-          checkarray: checkarray
+          checkarray: checkarray,
+          iscorrect: false
 
         })
 
       }).catch(error => {
-        errorMessage({
-          type: "danger",
-          icon: "danger",
-          message: Error
-        })
+        
+
         this.setState({
-          checkarray: []
+          checkarray: [],
+          iscorrect: false
         })
 
-        console.log(error)
+        console.log(error , " THIS IS ERROR")
 
       });
   };
   onNameSearch = text => {
-    const { username, checkarray } = this.state;
+    const { username, checkarray,iscorrect } = this.state;
     this.setState({
-      username: text
+      username: text ,
+      iscorrect:true
     });
     if (this.searchTimeout) {
       clearTimeout(this.searchTimeout);
     } else {
       if (username.length == 0) {
         this.setState({
-          checkarray: []
+          checkarray: [],
+          
         })
       }
     };
     this.searchTimeout = setTimeout(() => {
       this.User_Near();
-    }, 500);
+    }, 3000);
 
   };
 
@@ -105,7 +110,10 @@ export default class Search extends Component {
 
 
   Get_Location = () => {
-    const { testarray } = this.state;
+    const { testarray, iscorrect ,isloading} = this.state;
+    this.setState({
+      iscorrect:true
+    })
 
     locationPermission()
 
@@ -119,71 +127,78 @@ export default class Search extends Component {
             console.log(position.coords.longitude, "my testing");
             const lat = position.coords.latitude;
             const long = position.coords.longitude;
-            console.log(long,"debug long")
+            console.log(long, "debug long")
             actions.OnUserLocation(lat, long).then(response => {
-              console.log(response,"final response")
+              console.log(response, "final response")
               let checkarray = [...response.data]
               this.setState({
-                checkarray:checkarray
+                checkarray: checkarray,
+                iscorrect: false,
+                isloading:true
               })
 
               showMessage({
                 type: "success",
                 icon: "success",
                 message: "API HITTED"
-      
+
               })
             }).catch(error => {
-
+                   this.setState({
+                     iscorrect:false
+                   })
+                   console.log(error) ;
             })
 
-           }
-             
-    
-        ,(error) => {
-          // See error code charts below.
-          console.log(error.code, error.message);
-        },
-        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
-      );
-  }).catch(error => {
-    console.log(error, );
+          }
+
+
+          , (error) => {
+            // See error code charts below.
+            console.log(error.code, error.message);
+          },
+          { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+        );
+      }).catch(error => {
+        console.log(error,);
       })
-    }
-
-  
+  }
 
 
 
-renderItem = ({ item }) => {
 
 
-  return (
-    <View style={styles.searchview}>
+  renderItem = ({ item }) => {
 
-      <TouchableOpacity>
 
-        {/* <View>
+    return (
+      <ScrollView>
+        <View style={styles.searchview}>
+
+          <TouchableOpacity>
+
+            {/* <View>
           <Image style={styles.card} source={{
           uri:item.profileImg[0].original 
         }} />
           </View> */}
-        <View style={styles.viewlatestdealscard}>
-          <Image style={styles.card} source={{
-            uri: item.profileImg[0].original
-          }} />
-          <Text style={{ fontWeight: 'bold', marginTop: 10 }}>{item.fullName}</Text>
+            <View style={styles.viewlatestdealscard}>
+              <Image style={styles.card} source={{
+                uri: item.profileImg[0].original
+              }} />
+              <Text style={{ fontWeight: 'bold', marginTop: 10 }}>{item.fullName}</Text>
+            </View>
+
+
+
+          </TouchableOpacity>
+
+
+
         </View>
-
-
-
-      </TouchableOpacity>
-
-
-
-    </View>
-  );
-};
+      </ScrollView>
+    );
+  };
 
 
 
@@ -191,48 +206,50 @@ renderItem = ({ item }) => {
 
 
 
-render() {
-  const { username, checkarray } = this.state;
-  // const { data } = this.props;
+  render() {
+    const { username, checkarray, iscorrect,isloading } = this.state;
+    // const { data } = this.props;
 
-  return (
-    <View style={styles.viewsearchreturn}>
-      <View style={{ flexDirection: 'column', margin: 20 }}>
+    return (
+      <View style={styles.viewsearchreturn}>
+        <View style={{ flexDirection: 'column', margin: 20 }}>
 
-        <Text style={{ fontSize: 40, fontWeight: '700' }}>Hi, Sahil </Text>
-        <Text style={{ fontSize: 40, fontWeight: '700' }}>Find your friends </Text>
-      </View>
-      <View stylw={{ position: 'relative' }}>
-        <View style={{ position: 'absolute' }}>
-          <Image style={{ height: 20, width: 20, marginTop: 40, left: 300, zIndex: 1, top: 5, }} source={imagePath.search} />
+          <Text style={{ fontSize: 40, fontWeight: '700' }}>Hi, Sahil </Text>
+          <Text style={{ fontSize: 40, fontWeight: '700' }}>Find your friends </Text>
         </View>
+        <View style={{ position: 'relative' }}>
+          <View style={{ position: 'absolute' }}>
+            <Image style={{ height: 20, width: 20, marginTop: 40, left: 300, zIndex: 1, top: 5, }} source={imagePath.search} />
+          </View>
 
-        <Textinput placeholder="Search for name" styleofsearch={styles.stylesearch} onChangeText={(text) => this.onNameSearch(text)} />
+          <Textinput placeholder="Search for name" styleofsearch={styles.stylesearch} onChangeText={(text) => this.onNameSearch(text)} />
+        </View>
+        <Button buttonName="Search for Location" onButtonPress={this.Get_Location} />
+
+        <View>
+
+
+        </View>
+        <View style={styles.viewflatlist}>
+          <FlatList
+            data={checkarray}
+            onEndReachedThreshold={0.8}
+            showsVerticalScrollIndicator={true}
+            numColumns={1}
+            keyExtractor={(item) => item.id}
+            ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
+            renderItem={this.renderItem}
+
+            bounces={true}
+          />
+        <MyLoader iscorrect={iscorrect} styleatsearchpage={{ marginTop:50 }} />
+          {/* <MyLoader iscorrect={iscorrect} styleatsearchpage={{ marginTop:50 }} /> */}
+
+        </View>
       </View>
-      <Button buttonName="Search for Location" onButtonPress={this.Get_Location} />
 
-      <View>
-
-
-      </View>
-      <View style={styles.viewflatlist}>
-        <FlatList
-          data={checkarray}
-          onEndReachedThreshold={0.8}
-          showsVerticalScrollIndicator={false}
-          numColumns={1}
-          keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={() => <View style={{ marginBottom: 10 }} />}
-          renderItem={this.renderItem}
-
-          bounces={false}
-        />
-        
-      </View>
-    </View>
-
-  );
-}
+    );
+  }
 }
 
 

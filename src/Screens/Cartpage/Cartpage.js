@@ -33,7 +33,7 @@ import { color } from "react-native-reanimated";
   constructor(props) {
     super(props);
     this.state = {
-     
+      TotalPrice:0
     };
   }
 
@@ -43,15 +43,21 @@ import { color } from "react-native-reanimated";
 
   // const unsubscribe = store.subscribe(()=>this.setState({}))
   quantityIncrement = (id) => {
- 
-    const {data}=this.props.route.params
+
+
+    const {myarray}=this.props;
+    console.log(myarray,"in function")
+    
     const {TotalPrice} = this.state;
-    // alert(TotalPrice)
-let checkArray = [...data];
+//     // alert(TotalPrice)
+let checkArray = [...myarray];
+console.log(checkArray,"data in checkarray")
 
 const quantityindex = checkArray.findIndex((item) => item.id === id);
+console.log(quantityindex,"data in quanity index")
 
 let finalquantity = checkArray[quantityindex];
+console.log(finalquantity,"check final qunatity")
 
 finalquantity.quant += 1;
 
@@ -60,17 +66,18 @@ let Total =0;
 
 for(let i=0;i<checkArray.length;i++){
 Total+=checkArray[i].quant*checkArray[i].Price;
-console.log("total")
+console.log("total",Total)
 };
 
 this.setState({
+ 
   data: finalquantity,
   TotalPrice: Total
 
   
 });
 
-console.log(TotalPrice)
+console.log(TotalPrice,"tttttttt")
 
 
 };
@@ -97,13 +104,14 @@ return (
     marginLeft:10
     
    
-   }} buttonName="+"/>
+   }} buttonName="+" onButtonPress={()=>this.quantityIncrement(item.id)}/>
        
        <Text style={{ color: "black", fontWeight: "bold",marginLeft:3 }}>Quantity</Text>
         <Text>:</Text>
         <Text style={{ marginLeft: 5, marginTop: 1, color: "black",marginRight:3 }}>
           {item.quant}
         </Text>
+       
       <Button style={{backgroundColor: colors.themeColor,
     padding: 10,
     width: 30,
@@ -125,9 +133,9 @@ return (
   render() {
    
 
-    // console.log("idhr agya" , myarray) ;
+     console.log("myarray on cart page" , myarray) ;
 
-    // const unsubscribe = store.subscribe(()=>this.setState({}))
+  const {TotalPrice} =this.state;
     const {myarray} = this.props;
   
     return (
@@ -202,12 +210,13 @@ return (
               <Text style={{marginLeft: 'auto', fontWeight: 'bold'}}>
                 Rs. 
               </Text>
+              <Text>{TotalPrice}</Text>
             </View>
           </View>
         
          <View>
     
-     <Button buttonName="Place Order"/>
+     <Button buttonName="Place Order" styleofplaceorder={{marginTop:20}}/>
    </View>
         
       </SafeAreaView>

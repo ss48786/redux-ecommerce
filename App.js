@@ -20,6 +20,7 @@ import { getUserData } from './src/utils/Utils';
 import store from './src/redux/store';
 import types from './src/redux/types';
 import SplashScreen from 'react-native-splash-screen';
+import {getFCMToken} from "./src/utils/pushNotification"
 
 
 
@@ -41,6 +42,7 @@ class App extends Component {
 
   componentDidMount() {
 
+    getFCMToken()
     getUserData().then((userData) => {
 
       if (userData) {

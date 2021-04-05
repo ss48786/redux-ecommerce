@@ -57,7 +57,7 @@ username:'',
       return;
     }
     this.setState({isLoadingMore: true});
-    this.Hit_API(true);
+    this.Hit_API();
       
     };
 
@@ -171,7 +171,7 @@ username:'',
       const {infinitearray}=this.props;
       const{iscorrect,refreshing,username} = this.state;
 
-      console.log("INFINITE ARRAY " , infinitearray ) ;
+      console.log("INFINITE ARRAY by sahil  " , infinitearray ) ;
    
       return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -183,18 +183,18 @@ username:'',
           <Text style={{marginTop:10,marginLeft:10}}>Love, life and chill</Text>
           </View>
           
-{/* 
-         <Image source={{
-          uri:infinitearray[7].profileImg[0].original         
+
+         {/* <Image source={{
+          uri:infinitearray[1].profileImg[0].original         
         }} style={styles.dp}/>  */}
           </View>
 <View style={{position:'relative'}}>
           {/* <View>
             <Textinput placeholder="Search for name" styleofsearch={styles.stylesearch} onChangeText={(text)=>this.setState({username:text})}/>
-          </View> */}
+          </View>
           <View style={{position:'absolute',marginHorizontal:100}}>
             <Image source={imagePath.search} style={{height:20,width:20}}/>
-          </View>
+          </View> */}
           </View>
 
           <View style={{flexDirection:'row',justifyContent:'space-between'}}>
@@ -211,16 +211,16 @@ username:'',
           uri:infinitearray[6].profileImg[0].original         
         }} />
          <Image style={styles.myimage} source={{
-          uri:infinitearray[10].profileImg[0].original         
+          uri:infinitearray[7].profileImg[0].original         
         }} />
          <Image style={styles.myimage} source={{
-          uri:infinitearray[12].profileImg[0].original         
+          uri:infinitearray[3].profileImg[0].original         
         }} />
          <Image style={styles.myimage} source={{
-          uri:infinitearray[13].profileImg[0].original         
+          uri:infinitearray[8].profileImg[0].original         
         }} />
          <Image style={styles.myimage} source={{
-          uri:infinitearray[14].profileImg[0].original         
+          uri:infinitearray[5].profileImg[0].original         
         }} />
           </View>
         </ScrollView> */}

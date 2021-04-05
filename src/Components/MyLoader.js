@@ -1,10 +1,10 @@
 import React from "react";
 import {Text, View,ActivityIndicator,StyleSheet} from "react-native";
- function MyLoader({iscorrect}) {
+ function MyLoader({iscorrect,styleatsearchpage}) {
     if (iscorrect) {
         return (
             
-                <View style={[styles.container, styles.horizontal]}>
+                <View style={[styles.container, styles.horizontal,styleatsearchpage]}>
                    
                     <ActivityIndicator size="large" color="#0000ff" />
                    
@@ -20,7 +20,7 @@ import {Text, View,ActivityIndicator,StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth:1,
+        
       flex: 1,
       justifyContent: "center",
       position:"absolute",
