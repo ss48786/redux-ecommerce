@@ -29,4 +29,15 @@ export default {
     gallery: require("../assets/images/gallery.png"),
     // search: require("../assets/images/search.png"),
     search: require("../assets/images/search.png"),
+     home: require("../assets/images/home.png"),
+     wallpaper: require("../assets/images/wallpaper.jpg"),
+     wall: require("../assets/images/wall.webp"),
+     dp: require("../assets/images/dp.jpeg"),
+     h1: require("../assets/images/h1.jpeg"),
+     h2: require("../assets/images/h2.jpeg"),
+     h3: require("../assets/images/h3.jpeg"),
+     h4: require("../assets/images/h4.jpeg"),
+     h5: require("../assets/images/h5.jpeg"),
+     
   };
+  

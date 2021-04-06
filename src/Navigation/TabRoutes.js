@@ -8,6 +8,8 @@ import Homepage from "../Screens/HomePage/Homepage";
 import Latestdeals from "../Screens/LatestDeals/Latestdeals";
 import Profile from "../Screens/Profile/Profile";
 import Search from "../Screens/Search/Search";
+import Charts from "../Screens/Charts/Charts"
+import navigationString from "../constants/navigationString";
 
 
 
@@ -29,7 +31,7 @@ function TabRoutes() {
           }}
         />
         <Tab.Screen
-          name="Latest Deals"
+          name={navigationString.LATESTDEALS}
           component={Latestdeals}
           options={{
             tabBarLabel: "Deals",
@@ -53,6 +55,16 @@ function TabRoutes() {
           component={Search}
           options={{
             tabBarLabel: "search",
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="local-offer" color={color} size={size} />
+            ),
+          }}
+        />
+         <Tab.Screen
+          name="Charts"
+          component={Charts}
+          options={{
+            tabBarLabel: "Charts",
             tabBarIcon: ({ color, size }) => (
               <MaterialIcons name="local-offer" color={color} size={size} />
             ),

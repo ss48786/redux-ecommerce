@@ -326,12 +326,16 @@ dispatch({
        
 
         <ScrollView>
-          <TouchableOpacity >
-          <Image
+          
+          {/* <Image
             style={{ height: 300, width: 340, margin: 10 }}
-            source={imagePath.w1}
-          />
-          </TouchableOpacity>
+            source={imagePath.wall}
+          /> */}
+           <Image
+            style={{ height: 300, width: 340, margin: 10 }}
+            source={{uri:"https://img4.hkrtcdn.com/14248/bnr_1424703_o.gif"}}
+          /> 
+        
 
 <FlatList
             data={productsArray} 

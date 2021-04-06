@@ -6,7 +6,10 @@ export default {
     LATESTDEALS:'Latestdeals',
     DETAILSPAGE:'Detailspage',
     CARTPAGE:'Cartpage',
-    PROFILE:'Profile'
+    PROFILE:'Profile',
+    CHARTS:'Charts',
+    DRAWER:'Drawer'
+
     
    
    

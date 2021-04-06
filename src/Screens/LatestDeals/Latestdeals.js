@@ -187,6 +187,13 @@ username:'',
          {/* <Image source={{
           uri:infinitearray[1].profileImg[0].original         
         }} style={styles.dp}/>  */}
+
+
+<Image source={
+                imagePath.dp
+        } style={styles.dp}/> 
+
+
           </View>
 <View style={{position:'relative'}}>
           {/* <View>
@@ -202,28 +209,28 @@ username:'',
             <Text style={{marginLeft:10,fontWeight:'bold'}}>Category</Text>
             <Text style={{marginRight:10}}>See all</Text>
           </View>
-          {/* <ScrollView horizontal={true} style={{marginBottom:10}}>
+          <ScrollView horizontal={true} style={{marginBottom:10}}>
           <View style={{ flexDirection: "row",margin:10 }}>
-            <Image style={styles.myimage} source={{
-          uri:infinitearray[2].profileImg[0].original         
-        }} />
-             <Image style={styles.myimage} source={{
-          uri:infinitearray[6].profileImg[0].original         
-        }} />
-         <Image style={styles.myimage} source={{
-          uri:infinitearray[7].profileImg[0].original         
-        }} />
-         <Image style={styles.myimage} source={{
-          uri:infinitearray[3].profileImg[0].original         
-        }} />
-         <Image style={styles.myimage} source={{
-          uri:infinitearray[8].profileImg[0].original         
-        }} />
-         <Image style={styles.myimage} source={{
-          uri:infinitearray[5].profileImg[0].original         
-        }} />
+            <Image style={styles.myimage} source={
+                imagePath.h5
+        } />
+             <Image style={styles.myimage} source={
+                 imagePath.h2
+        } />
+         <Image style={styles.myimage} source={
+                  imagePath.h3
+        } />
+         <Image style={styles.myimage} source={
+                 imagePath.h4
+        } />
+         <Image style={styles.myimage} source={
+                imagePath.h5
+        }/>
+         <Image style={styles.myimage} source={
+                    imagePath.h2
+        } />
           </View>
-        </ScrollView> */}
+        </ScrollView>
         
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
          
@@ -374,12 +381,17 @@ margin: 10,
 
       myimage: {
         height: 300,
+        //  aspectRatio:1,
         width: 120,
          borderTopLeftRadius: 10,
       borderBottomLeftRadius: 10,
       borderTopRightRadius: 10,
       borderBottomRightRadius: 10,
-  marginRight:10
+  marginRight:10,
+  //  resizeMode:'contain',
+  // overflow:'hidden',
+  // flexWrap:'wrap'
+
       },
       stylesearch:{
         borderBottomColor:colors.themeColor , 

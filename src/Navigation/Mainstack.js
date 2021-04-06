@@ -5,6 +5,8 @@ import navigationString from "../constants/navigationString"
 import Detailspage from "../Screens/Detailspage/Detailspage";
 import Homepage from "../Screens/HomePage/Homepage";
 import Cartpage from "../Screens/Cartpage/Cartpage";
+import Make_Drawer from "./Drawer";
+
 const Stack=createStackNavigator();
 
 export default function(){
@@ -12,13 +14,22 @@ export default function(){
 
     return(
       <>
-      <Stack.Screen
+      {/* <Stack.Screen
         name={navigationString.TAB_ROUTES}
         options={{
           headerShown:false
         }}
         component={TabRoutes}
-      />
+      /> */}
+<Stack.Screen
+        name={navigationString.DRAWER}
+        options={{
+          headerShown:false
+        }}
+        component={Make_Drawer}
+      /> 
+
+
 
 <Stack.Screen
         name={navigationString.DETAILSPAGE}
