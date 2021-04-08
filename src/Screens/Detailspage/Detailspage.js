@@ -20,7 +20,8 @@ import { types } from "@babel/core";
 import { connect } from "react-redux";
 import store from "../../redux/store";
 import Header from "../../Components/Header";
-
+import ImageZoom from "react-native-image-pan-zoom";
+import {Dimensions} from 'react-native';
 
 const{dispatch} = store;
 
@@ -78,7 +79,14 @@ const{dispatch} = store;
       <SafeAreaView style={{ flex: 1 }}>
         <View>
 <Header/>
-        <Image style={styles.card} source={newObj.image} />
+        {/* <Image style={styles.card} source={newObj.image} /> */}
+        <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={Dimensions.get('window').height}
+                       imageWidth={160}
+                       imageHeight={300}>
+                <Image style={styles.card}
+                       source={newObj.image}/>
+            </ImageZoom>
         <FlatList
             data={newObj} 
             showsVerticalScrollIndicator={false}

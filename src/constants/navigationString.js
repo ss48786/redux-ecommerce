@@ -8,7 +8,8 @@ export default {
     CARTPAGE:'Cartpage',
     PROFILE:'Profile',
     CHARTS:'Charts',
-    DRAWER:'Drawer'
+    DRAWER:'Drawer',
+    GIFTEDCHAT:'GiftedChat'
 
     
    

@@ -24,6 +24,8 @@ import colors from "../../styles/colors";
 import Textinput from "../../Components/Textinput";
 import fontfamily from "../../styles/fontFamily"
 import Header from "../../Components/Header";
+import ImageZoom from "react-native-image-pan-zoom";
+import {Dimensions} from 'react-native';
 
 
 
@@ -260,7 +262,15 @@ dispatch({
         <View>
         <TouchableOpacity onPress={()=>this.oncheck(item.id)}>
         <View style={{ justifyContent: "space-between", margin: 10 }}>
+        {/* <ImageZoom cropWidth={Dimensions.get('window').width}
+                       cropHeight={Dimensions.get('window').height}
+                       imageWidth={160}
+                       imageHeight={300}>
+                <Image style={styles.card}
+                       source={item.image}/>
+            </ImageZoom> */}
           <Image style={styles.card} source={item.image} />
+
         </View>
 
   </TouchableOpacity>

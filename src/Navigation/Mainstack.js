@@ -6,6 +6,8 @@ import Detailspage from "../Screens/Detailspage/Detailspage";
 import Homepage from "../Screens/HomePage/Homepage";
 import Cartpage from "../Screens/Cartpage/Cartpage";
 import Make_Drawer from "./Drawer";
+import GiftedChat from "../Screens/GiftedChat/GiftedChat";
+
 
 const Stack=createStackNavigator();
 
@@ -45,6 +47,13 @@ export default function(){
           headerShown: false,
         }}
         component={Cartpage}
+      />
+      <Stack.Screen
+        name={navigationString.GIFTEDCHAT}
+        options={{
+          headerShown: false,
+        }}
+        component={GiftedChat}
       />
  
       
