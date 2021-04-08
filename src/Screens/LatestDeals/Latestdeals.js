@@ -146,7 +146,7 @@ class Latestdeals extends Component {
 
 
   renderItem = ({ item }) => {
-    // console.log("RENDER ITEM" , item) ;
+    console.log("RENDER ITEM", item);
 
     return (
       <View>
@@ -171,10 +171,10 @@ class Latestdeals extends Component {
     );
   };
   render() {
-    const { infinitearray,navigation } = this.props;
+    const { infinitearray, navigation } = this.props;
     const { iscorrect, refreshing, username } = this.state;
 
-    console.log("INFINITE ARRAY by sahil  ", infinitearray);
+   
 
     return (
       <SafeAreaView style={{ flex: 1 }}>
@@ -198,11 +198,11 @@ class Latestdeals extends Component {
             imagePath.dp
           } style={styles.dp} />
           </ImageZoom> */}
-          <TouchableOpacity onPress={()=>navigation.navigate(navigationString.CHARTS)}>
+          <TouchableOpacity onPress={() => navigation.navigate(navigationString.CHARTS)}>
 
-          <Image source={
-            imagePath.dp
-          } style={styles.dp} />
+            <Image source={
+              imagePath.dp
+            } style={styles.dp} />
           </TouchableOpacity>
 
 

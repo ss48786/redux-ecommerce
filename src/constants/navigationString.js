@@ -9,7 +9,8 @@ export default {
     PROFILE:'Profile',
     CHARTS:'Charts',
     DRAWER:'Drawer',
-    GIFTEDCHAT:'GiftedChat'
+    GIFTEDCHAT:'GiftedChat',
+    CHATCARD:"Chatcard"
 
     
    

@@ -1,6 +1,6 @@
 
 import { reject } from 'lodash';
-import { LOGIN_OTP , VERIFY_OTP , USER_SEARCH, USER_NEAR_ME,USER_LOCATION } from '../../config/url';
+import { LOGIN_OTP , VERIFY_OTP , USER_SEARCH, USER_NEAR_ME,USER_LOCATION,GET_CONVERSATION_MESSAGES } from '../../config/url';
 
 import { apiDelete, apiGet, apiPost, apiPut, setUserData } from '../../utils/Utils';
 import store from '../store';
@@ -115,3 +115,15 @@ let query=`?coordinates=[${long},${lat}]`;
   
   
  }
+
+ export function GetConversation(limit,headers={}) {
+   let query =`?limit=${limit} &skip=0`;
+  
+  return apiGet(GET_CONVERSATION_MESSAGES,headers )
+   }
+
+
+  //  export function OnGetAll(limit) {
+  //   let query =`?limit= ${ limit } &skip=0`;
+  //   return apiGet(GETAll_COVERSATIONS + query);
+  // }
