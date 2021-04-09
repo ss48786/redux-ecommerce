@@ -24,5 +24,6 @@ export const USER_SEARCH = getApiUrl('/user/v1/getUserSearch');
 export const USER_NEAR_ME = getApiUrl('/user/v1/getUserNearMe?name=');
 export const USER_LOCATION = getApiUrl('/user/v1/getUserNearMe');
 export const GET_CONVERSATION_MESSAGES  = getApiUrl('/user/v1/getAllConversations');
+export const GET_INDIVIDUAL_MESSAGES  = getApiUrl('/user/v1/getConversationMessages');
 
 

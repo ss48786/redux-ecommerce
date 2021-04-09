@@ -23,6 +23,8 @@ import TabRoutes from "../../Navigation/TabRoutes";
 import actions from "../../redux/actions" ;
 
 import { LOGIN, SIGNUP } from "../../config/url";
+import strings from "../../constants/lang";
+import styles from "./styles";
 
 
 
@@ -110,10 +112,10 @@ export default class Signup extends Component {
 
         </View>
         <View style={{ margin: 20 }}>
-          <Text>Your number is safe with us. We won't share your details with anyone.</Text>
+          <Text> {strings.YOUR_NUMBER_IS_SAFE_WITH_US_WE_WONT_SHARE_YOUR_DETAILS} </Text>
         </View>
         <View>
-          <Text style={{ color: "#36b6b0", margin: 20 }}>Mobile number</Text>
+          <Text style={{ color: "#36b6b0", margin: 20 }}>  {strings.MOBILE_NUMBER}   </Text>
         </View>
         <View>
           <Textinput
@@ -135,12 +137,12 @@ export default class Signup extends Component {
           <Button buttonName="Sign Up" onButtonPress={this.isValidlogin} />
         </View>
         <View style={{ flexDirection: 'row', margin: 20 }}>
-          <Text> By signing up you agree to our </Text>
-          <Text style={{ color: colors.textatsignup }}>Terms & Conditions</Text>
+          <Text> {strings.BY_SIGNING_UP_YOU_AGREE_TO_OUR} </Text>
+          <Text style={{ color: colors.textatsignup }}>{strings.TERMS_CONDITIONS}</Text>
 
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-          <Text>OR</Text>
+          <Text>{strings.OR}</Text>
         </View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -152,9 +154,9 @@ export default class Signup extends Component {
           </View>
         </View>
         <View style={{ flexDirection: "row", justifyContent: 'center' }}>
-          <Text>Already have an account ?</Text>
+          <Text>{strings.ALREADY_HAVE_AN_ACCOUNT}</Text>
           <TouchableOpacity onPress={this.isValidlogin}>
-            <Text style={{ color: colors.textatsignup, marginLeft: 10 }}>Log In</Text>
+            <Text style={{ color: colors.textatsignup, marginLeft: 10 }}>{strings.LOG_IN}</Text>
           </TouchableOpacity>
         </View>
 
@@ -163,100 +165,3 @@ export default class Signup extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  loginScreen: {
-
-    backgroundColor: "#ffffff",
-    borderWidth: 2,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.32,
-    shadowRadius: 5.46,
-
-    elevation: 5,
-    borderColor: "white"
-
-
-
-
-
-  },
-  forFlex: {
-    flex: 0.4,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  ajioLogo: {
-    width: 80,
-    height: 80,
-  },
-  fbLogo: {
-    width: 20,
-    height: 20,
-  },
-  googleLogo: {
-    width: 30,
-    height: 30,
-  },
-  forForm: {
-    flex: 0.6,
-    alignItems: "center",
-  },
-  orThing: {
-    flexDirection: "row",
-  },
-  buttonStyle: {
-    borderWidth: 1,
-    padding: 15,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  fbbuttonStyle: {
-    borderWidth: 1,
-    padding: 15,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    margin: 10,
-  },
-  googlebuttonStyle: {
-    borderWidth: 1,
-    padding: 10,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    margin: 10,
-  },
-  viewfacebook: {
-    flexDirection: 'row', justifyContent: 'space-between',
-    marginTop: 30,
-    marginBottom: 30,
-    borderWidth: 1,
-    marginLeft: 20,
-    borderColor: 'blue',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-  },
-  viewgoogle: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 30,
-    marginBottom: 30,
-    borderWidth: 1,
-    marginRight: 20, borderColor: 'red',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    borderBottomLeftRadius: 5,
-    borderBottomRightRadius: 5,
-  }
-});

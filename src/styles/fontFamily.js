@@ -8,6 +8,6 @@ export default {
     futuraBook:"Futura-Book",
     futura:"Futura-Normal",
     semiBold:"SFProText-SemiBold",
-  new:"NewTegomin-Regular"
+    NewTegomin_Regular:"NewTegomin-Regular"
 }
 

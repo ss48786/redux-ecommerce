@@ -7,7 +7,11 @@ import imagePath from "../../constants/imagePath";
 import navigationString from "../../constants/navigationString";
 import actions from "../../redux/actions";
 import colors from "../../styles/colors";
+import commonStyles from "../../styles/commonStyles";
 import fontFamily from "../../styles/fontFamily";
+import styles from "./styles";
+
+
 
 
 
@@ -70,11 +74,11 @@ class GiftedChat extends Component {
     const { chatarray, cardarray } = this.state;
     const { navigation } = this.props;
 
-    let newarray=[item]
+    // let newarray=[item]
     
 
    
-    navigation.navigate(navigationString.CHATCARD, { cardarray: newarray }
+    navigation.navigate(navigationString.CHATCARD, { item: item }
     )
 
 
@@ -92,8 +96,8 @@ class GiftedChat extends Component {
               <Text style={styles.textsize}>{item.userInfo.profileImg[0].thumbnail}</Text>
             </View>  */}
 
-          <View style={styles.viewlatestdealscard}>
-            <Image style={styles.card} source={{
+          <View style={commonStyles.viewlatestdealscard}>
+            <Image style={commonStyles.card} source={{
               uri: item.userInfo.profileImg[0].thumbnail
             }} />
             <Text style={{ fontWeight: 'bold', marginTop: 10 }}>{item.userInfo.fullName}</Text>
@@ -148,22 +152,22 @@ class GiftedChat extends Component {
           </View>
           <ScrollView horizontal={true} style={{ marginBottom: 10 }}>
             <View style={{ flexDirection: "row", margin: 10 }}>
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h5
               } />
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h2
               } />
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h3
               } />
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h4
               } />
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h5
               } />
-              <Image style={styles.myimage} source={
+              <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h2
               } />
             </View>
@@ -216,131 +220,131 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(GiftedChat);
 
 
-const styles = StyleSheet.create({
-  loginScreen: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-  },
-  forFlex: {
-    flex: 0.4,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  ajioLogo: {
-    width: 80,
-    height: 80,
-  },
-  fbLogo: {
-    width: 20,
-    height: 20,
-  },
-  googleLogo: {
-    width: 30,
-    height: 30,
-  },
-  forForm: {
-    flex: 0.6,
-    alignItems: "center",
-  },
-  orThing: {
-    flexDirection: "row",
-  },
-  buttonStyle: {
-    borderWidth: 1,
-    padding: 15,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  fbbuttonStyle: {
-    borderWidth: 1,
-    padding: 15,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    margin: 10,
-  },
-  googlebuttonStyle: {
-    borderWidth: 1,
-    padding: 10,
-    width: 250,
-    borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    margin: 10,
-  },
-  card: {
-    height: 80,
-    width: 80,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    margin: 10
-  },
-  textsize: {
-    fontFamily: fontFamily.new
-  },
+// const styles = StyleSheet.create({
+//   loginScreen: {
+//     flex: 1,
+//     backgroundColor: "#ffffff",
+//   },
+//   forFlex: {
+//     flex: 0.4,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   ajioLogo: {
+//     width: 80,
+//     height: 80,
+//   },
+//   fbLogo: {
+//     width: 20,
+//     height: 20,
+//   },
+//   googleLogo: {
+//     width: 30,
+//     height: 30,
+//   },
+//   forForm: {
+//     flex: 0.6,
+//     alignItems: "center",
+//   },
+//   orThing: {
+//     flexDirection: "row",
+//   },
+//   buttonStyle: {
+//     borderWidth: 1,
+//     padding: 15,
+//     width: 250,
+//     borderRadius: 8,
+//     flexDirection: "row",
+//     justifyContent: "space-around",
+//   },
+//   fbbuttonStyle: {
+//     borderWidth: 1,
+//     padding: 15,
+//     width: 250,
+//     borderRadius: 8,
+//     flexDirection: "row",
+//     justifyContent: "space-around",
+//     margin: 10,
+//   },
+//   googlebuttonStyle: {
+//     borderWidth: 1,
+//     padding: 10,
+//     width: 250,
+//     borderRadius: 8,
+//     flexDirection: "row",
+//     justifyContent: "space-around",
+//     alignItems: "center",
+//     margin: 10,
+//   },
+//   card: {
+//     height: 80,
+//     width: 80,
+//     borderTopLeftRadius: 10,
+//     borderBottomLeftRadius: 10,
+//     borderTopRightRadius: 10,
+//     borderBottomRightRadius: 10,
+//     margin: 10
+//   },
+//   textsize: {
+//     fontFamily: fontFamily.new
+//   },
 
-  viewlatestdealscard: {
-    flexDirection: 'row',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+//   viewlatestdealscard: {
+//     flexDirection: 'row',
+//     shadowColor: "#000",
+//     shadowOffset: {
+//       width: 0,
+//       height: 2,
+//     },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
 
-    elevation: 5,
-    // justifyContent: "space-between", 
-    margin: 10,
-    backgroundColor: colors.cardcolor,
-    margin: 10,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-  },
+//     elevation: 5,
+//     // justifyContent: "space-between", 
+//     margin: 10,
+//     backgroundColor: colors.cardcolor,
+//     margin: 10,
+//     borderTopLeftRadius: 10,
+//     borderBottomLeftRadius: 10,
+//     borderTopRightRadius: 10,
+//     borderBottomRightRadius: 10,
+//   },
 
 
-  dp: {
-    height: 100,
+//   dp: {
+//     height: 100,
 
-    width: 100,
-    margin: 10,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-  },
+//     width: 100,
+//     margin: 10,
+//     borderTopLeftRadius: 10,
+//     borderBottomLeftRadius: 10,
+//     borderTopRightRadius: 10,
+//     borderBottomRightRadius: 10,
+//   },
 
-  myimage: {
-    height: 150,
-    //  aspectRatio:1,
-    width: 120,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-    marginRight: 10,
-    //  resizeMode:'contain',
-    // overflow:'hidden',
-    // flexWrap:'wrap'
+//   myimage: {
+//     height: 150,
+//     //  aspectRatio:1,
+//     width: 120,
+//     borderTopLeftRadius: 10,
+//     borderBottomLeftRadius: 10,
+//     borderTopRightRadius: 10,
+//     borderBottomRightRadius: 10,
+//     marginRight: 10,
+//     //  resizeMode:'contain',
+//     // overflow:'hidden',
+//     // flexWrap:'wrap'
 
-  },
-  stylesearch: {
-    borderBottomColor: colors.themeColor,
+//   },
+//   stylesearch: {
+//     borderBottomColor: colors.themeColor,
 
-    borderTopColor: colors.themeColor,
-    borderLeftColor: colors.themeColor,
-    borderRightColor: colors.themeColor,
-  },
+//     borderTopColor: colors.themeColor,
+//     borderLeftColor: colors.themeColor,
+//     borderRightColor: colors.themeColor,
+//   },
 
-});
+// });
 
 
 
