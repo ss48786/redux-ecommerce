@@ -182,7 +182,8 @@ class Latestdeals extends Component {
    
 
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      // <ScrollView style={{flex:1}}>
+      <SafeAreaView style={{ flex: 1}}>
         {/* <Button style={{marginTop:20}} onButtonPress={this.onButtonPress}/> */}
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -226,8 +227,9 @@ class Latestdeals extends Component {
           <Text style={{ marginLeft: 10, fontWeight: 'bold' }}>Category</Text>
           <Text style={{ marginRight: 10 }}>See all</Text>
         </View>
-        <ScrollView horizontal={true} style={{ marginBottom: 10 }}>
-          <View style={{ flexDirection: "row", margin: 10 }}>
+        <View>
+        <ScrollView horizontal={true} style={{ marginBottom: 10, }} showsHorizontalScrollIndicator={false}>
+          <View style={{ margin: 10, flexDirection: 'row' }}>
             <Image style={commonStyles.myimagescarousel} source={
               imagePath.h5
             } />
@@ -248,6 +250,8 @@ class Latestdeals extends Component {
             } />
           </View>
         </ScrollView>
+        </View>
+        
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
@@ -277,6 +281,7 @@ class Latestdeals extends Component {
 
 
       </SafeAreaView>
+      // </ScrollView>
     );
   }
 }

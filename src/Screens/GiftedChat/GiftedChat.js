@@ -116,7 +116,7 @@ class GiftedChat extends Component {
     console.log(cardarray, " THIS IS CARDARRAY" ) ;
     return (
 
-      <ScrollView styke={{ flex: 1 }}>
+     
         <SafeAreaView style={{ flex: 1 }}>
           {/* <Button style={{marginTop:20}} onButtonPress={this.onButtonPress}/> */}
 
@@ -150,7 +150,8 @@ class GiftedChat extends Component {
             <Text style={{ marginLeft: 10, fontWeight: 'bold' }}>Category</Text>
             <Text style={{ marginRight: 10 }}>See all</Text>
           </View>
-          <ScrollView horizontal={true} style={{ marginBottom: 10 }}>
+          <View>
+          <ScrollView horizontal={true} style={{ marginBottom: 10 }} showsHorizontalScrollIndicator={false}>
             <View style={{ flexDirection: "row", margin: 10 }}>
               <Image style={commonStyles.myimagescarousel} source={
                 imagePath.h5
@@ -172,6 +173,7 @@ class GiftedChat extends Component {
               } />
             </View>
           </ScrollView>
+          </View>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 
@@ -201,7 +203,7 @@ class GiftedChat extends Component {
 
 
         </SafeAreaView>
-      </ScrollView>
+    
     )
   }
 }

@@ -22,7 +22,8 @@ import store from "../../redux/store";
 import Header from "../../Components/Header";
 import ImageZoom from "react-native-image-pan-zoom";
 import {Dimensions} from 'react-native';
-import styles from "../GiftedChat/styles";
+import styles from "./styles";
+
 
 const{dispatch} = store;
 
