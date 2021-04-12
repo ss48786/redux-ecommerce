@@ -22,6 +22,9 @@ import {locationPermission} from '../../utils/permission';
 import MyLoader from '../../Components/MyLoader';
 import fontFamily from '../../styles/fontFamily';
 import styles from './styles';
+import store from '../../redux/store';
+
+const{dispatch} =store;
 
 export default class Search extends Component {
   constructor(props) {
@@ -150,6 +153,14 @@ export default class Search extends Component {
       });
   };
 
+  clearUserData=()=>{
+    dispatch({
+      type:types.LOGOUT,
+      
+     
+    })
+  }
+
   renderItem = ({item}) => {
     return (
       <ScrollView>
@@ -183,6 +194,13 @@ export default class Search extends Component {
 
     return (
       <View style={styles.viewsearchreturn}>
+        <View>
+          <TouchableOpacity onPress={()=>this.clearUserData()}>
+        <Text style={{fontSize: 40, fontFamily: fontFamily.futuraHeavyBt}}>
+           Log Out{' '}
+          </Text>
+          </TouchableOpacity>
+        </View>
         <View style={{flexDirection: 'column', margin: 20}}>
           <Text style={{fontSize: 40, fontFamily: fontFamily.futuraHeavyBt}}>
             Hi, Sahil{' '}
@@ -191,6 +209,7 @@ export default class Search extends Component {
             Find your friends{' '}
           </Text>
         </View>
+        
         <View style={{position: 'relative'}}>
           <View style={{position: 'absolute'}}>
             <Image

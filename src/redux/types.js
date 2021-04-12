@@ -5,6 +5,7 @@ export default {
     LOGGED_IN:'isloggedin' ,
     DATASEARCH:'DataSearch',
     COLOR:'Color',
-    NEARUSER:'NEARUSER'
+    NEARUSER:'NEARUSER',
+    LOGOUT:'LOGOUT'
 
 }

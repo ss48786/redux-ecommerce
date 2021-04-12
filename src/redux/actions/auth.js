@@ -116,11 +116,11 @@ let query=`?coordinates=[${long},${lat}]`;
   
  }
 
- export function GetConversation(limit,headers={}) {
-   let query =`?limit=${limit} &skip=0`;
+//  export function GetConversation(limit,headers={}) {
+//    let query =`?limit=${limit} &skip=0`;
   
-  return apiGet(GET_CONVERSATION_MESSAGES,headers )
-   }
+//   return apiGet(GET_CONVERSATION_MESSAGES,headers )
+//    }
 
 
   //  export function OnGetAll(limit) {
@@ -132,4 +132,10 @@ let query=`?coordinates=[${long},${lat}]`;
     let query =`?commonConversationId=${commonConversationId}`;
    
    return apiGet(GET_INDIVIDUAL_MESSAGES+query )
+    }
+
+    export function logOut(){
+      dispatch({
+        types:types.LOGOUT
+      })
     }

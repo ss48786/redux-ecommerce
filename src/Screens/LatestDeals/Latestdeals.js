@@ -228,7 +228,8 @@ class Latestdeals extends Component {
           <Text style={{ marginRight: 10 }}>See all</Text>
         </View>
         <View>
-        <ScrollView horizontal={true} style={{ marginBottom: 10, }} showsHorizontalScrollIndicator={false}>
+        <ScrollView horizontal={true} style={{ marginBottom: 10, }} showsHorizontalScrollIndicator={false}
+        >
           <View style={{ margin: 10, flexDirection: 'row' }}>
             <Image style={commonStyles.myimagescarousel} source={
               imagePath.h5

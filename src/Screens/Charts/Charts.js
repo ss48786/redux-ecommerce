@@ -39,6 +39,7 @@ class Charts extends Component {
       <ScrollView style={{flex: 1}}>
         <View>
           <Text>welcome to charts page</Text>
+          
           <AreaChart
             style={{height: 200}}
             data={mydata}

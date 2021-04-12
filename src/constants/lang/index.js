@@ -1,5 +1,8 @@
 import en from './en';
+// import LocalizedStrings from 'react-native-localization';
 
-export default {
-    ...en,
-}
+let strings = {
+
+...en 
+};
+export default strings;

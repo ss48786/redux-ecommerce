@@ -104,20 +104,20 @@ export default StyleSheet.create({
       borderBottomRightRadius: 10,
     },
   
-    myimage: {
-      height: 150,
-      //  aspectRatio:1,
-      width: 120,
-      borderTopLeftRadius: 10,
-      borderBottomLeftRadius: 10,
-      borderTopRightRadius: 10,
-      borderBottomRightRadius: 10,
-      marginRight: 10,
-      //  resizeMode:'contain',
-      // overflow:'hidden',
-      // flexWrap:'wrap'
+    // myimagescarousel: {
+    //   height: 150,
+    //   //  aspectRatio:1,
+    //   width: 120,
+    //   borderTopLeftRadius: 10,
+    //   borderBottomLeftRadius: 10,
+    //   borderTopRightRadius: 10,
+    //   borderBottomRightRadius: 10,
+    //   marginRight: 10,
+    //   //  resizeMode:'contain',
+    //   // overflow:'hidden',
+    //   // flexWrap:'wrap'
   
-    },
+    // },
     stylesearch: {
       borderBottomColor: colors.themeColor,
   

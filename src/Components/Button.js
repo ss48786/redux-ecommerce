@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   View,
@@ -7,48 +7,53 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-} from "react-native";
+} from 'react-native';
 
 export default function Formbutton(props) {
-  const { onButtonPress,  buttonName, text,mytext,style,name,TotalPrice ,textbtn,styleofprofilebutton,styleofplaceorder} = props;
-  let check=false;
+  const {
+    onButtonPress,
+    buttonName,
+    text,
+    mytext,
+    style,
+    name,
+    TotalPrice,
+    textbtn,
+    styleofprofilebutton,
+    styleofplaceorder,
+  } = props;
+  let check = false;
   return (
     <View style={styles.textInput}>
       <TouchableOpacity
         onPress={onButtonPress}
-        style={[styles.buttonStyle, style, styleofprofilebutton,styleofplaceorder]}
-      >
-        <Text style={[styles.text,textbtn]}>{buttonName}  </Text>
-      
-        
-       
+        style={[
+          styles.buttonStyle,
+          style,
+          styleofprofilebutton,
+          styleofplaceorder,
+        ]}>
+        <Text style={[styles.text, textbtn]}>{buttonName} </Text>
       </TouchableOpacity>
-     
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   textInput: {
-    flexDirection: "row",
-    justifyContent: "center",
-   
-  
-  
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   buttonStyle: {
-    backgroundColor: "#36b6b0",
+    backgroundColor: '#36b6b0',
     padding: 15,
     width: 320,
     borderRadius: 8,
-    flexDirection: "row",
-    justifyContent: "center",
-    
-    
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
-  text:{
-    color: "#e3e3e3", fontWeight: "bold"
-  }
-  
-
+  text: {
+    color: '#e3e3e3',
+    fontWeight: 'bold',
+  },
 });

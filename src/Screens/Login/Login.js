@@ -20,7 +20,7 @@ import {
   moderateScale,
 } from '../../styles/responsiveSize';
 import styles from './styles';
-
+import OTPTextInput from "react-native-otp-textinput";
 
 const {dispatch} = store;
 
@@ -77,15 +77,21 @@ export default class Login extends Component {
             <Text style={{fontSize: 40}}>OTP verification</Text>
           </View>
           <View>
-            <Textinput
+            {/* <Textinput
               placeholder="Enter otp"
               onchangetext={text =>
                 this.setState({
                   number: text,
                 })
               }
-            />
+            /> */}
             {/* handleTextChange={(text) => this.setState({otpInput: text})} */}
+            <OTPTextInput ref={e => (this.otpInput = e)}
+            inputCount={5}
+            handleTextChange={(text)  => this.setState({otpInput: text}) }
+            />
+
+
           </View>
           <View style={{margin: 20, marginTop: 50}}>
             <Text>

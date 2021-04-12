@@ -21,6 +21,7 @@ import store from './src/redux/store';
 import types from './src/redux/types';
 import SplashScreen from 'react-native-splash-screen';
 import {getFCMToken} from "./src/utils/pushNotification"
+import socketServices from './src/utils/socketService';
 
 
 
@@ -42,10 +43,11 @@ class App extends Component {
 
   componentDidMount() {
 
-    getFCMToken()
+    getFCMToken() ;
     getUserData().then((userData) => {
 
       if (userData) {
+
         console.log("ASYNC STORAGE SE " , userData) ;
 
         dispatch({
