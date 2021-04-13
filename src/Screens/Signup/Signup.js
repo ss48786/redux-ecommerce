@@ -25,9 +25,13 @@ import actions from "../../redux/actions" ;
 import { LOGIN, SIGNUP } from "../../config/url";
 import strings from "../../constants/lang";
 import styles from "./styles";
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
 
-
-
+GoogleSignin.configure();
 
 
 
@@ -94,6 +98,37 @@ export default class Signup extends Component {
 
   };
 
+
+  signIn = async () => {
+   
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      this.setState({ userInfo });
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
+
+// function for google sign out
+  // signOut = async () => {
+  //   try {
+  //     await GoogleSignin.revokeAccess();
+  //     await GoogleSignin.signOut();
+  //     this.setState({ user: null }); // Remember to remove the user from your app's state as well
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
+
   render() {
 
     return (
@@ -150,7 +185,7 @@ export default class Signup extends Component {
             <Button buttonName="Facebook" style={{ width: 150, backgroundColor: 'white', }} textbtn={{ color: "blue" }} />
           </View>
           <View style={styles.viewgoogle}>
-            <Button buttonName="Google" style={{ width: 150, backgroundColor: 'white' }} textbtn={{ color: "red" }} />
+            <Button buttonName="Google" onButtonPress={this.signIn} style={{ width: 150, backgroundColor: 'white' }} textbtn={{ color: "red" }} />
           </View>
         </View>
         <View style={{ flexDirection: "row", justifyContent: 'center' }}>

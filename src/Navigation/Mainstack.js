@@ -8,6 +8,7 @@ import Cartpage from "../Screens/Cartpage/Cartpage";
 import Make_Drawer from "./Drawer";
 import GiftedChat from "../Screens/GiftedChat/GiftedChat";
 import Chatcard from "../Screens/Chatcard/Chatcard";
+import Hooks from "../Screens/Hooks/Hooks";
 
 
 
@@ -64,6 +65,13 @@ export default function(){
           headerShown: false,
         }}
         component={Chatcard}
+      />
+      <Stack.Screen
+        name={navigationString.HOOKS}
+        options={{
+          headerShown: false,
+        }}
+        component={Hooks}
       />
        
  

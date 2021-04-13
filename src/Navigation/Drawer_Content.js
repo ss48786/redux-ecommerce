@@ -31,6 +31,13 @@ function Drawer_Content(props) {
                      </Text>
                 </TouchableOpacity>
             </View>
+            <View style={{margin:30}}>
+            <TouchableOpacity onPress={() => navigation.navigate(navigationString.HOOKS)}>
+                    <Text>
+                        HOOKS
+                     </Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
 

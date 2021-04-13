@@ -10,7 +10,8 @@ export default {
     CHARTS:'Charts',
     DRAWER:'Drawer',
     GIFTEDCHAT:'GiftedChat',
-    CHATCARD:"Chatcard"
+    CHATCARD:"Chatcard",
+    HOOKS:'Hooks',
 
     
    
