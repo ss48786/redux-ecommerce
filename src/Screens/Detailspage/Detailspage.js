@@ -105,7 +105,7 @@ const{dispatch} = store;
 
 const mapStateToProps = state =>{
   return{
-    newObj:state.reducer.newObj
+    newObj:state.home.newObj
   }
 
   }

@@ -14,10 +14,10 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case types.DETAILS:
-      const {newObj} = action.payload;
-      //  alert(JSON.stringify(newObj))
-      return {...state, newObj};
+    // case types.DETAILS:
+    //   const {newObj} = action.payload;
+    //   //  alert(JSON.stringify(newObj))
+    //   return {...state, newObj};
 
     case types.CART:
       const {cartarray, index} = action.payload;
