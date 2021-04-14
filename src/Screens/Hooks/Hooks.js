@@ -8,23 +8,23 @@ import {View,Text} from "react-native";
 
 
   const Hooks=()=>{
-      const[count,setcount]=useState(0);
+      const[visible,invisible]=useState(false);
 
 
       const toggler=()=>{
       
-  setcount(count+1)
+     invisible(!visible)
    }
    
 
    return(
 <View style={{flexDirection:'row',justifyContent:'center', marginTop:200}}>
     
-   <Text style={{backgroundColor:'red',fontSize:100}} onPress={()=>toggler()}> {count}</Text>
+    {!visible&&<Text style={{backgroundColor:'red'}} onPress={()=>toggler()}> welcome to hooks learning</Text>}
 
 
 
-    {/* {visible&&( <View><Text style={{backgroundColor:'blue'}} onPress={()=>{toggler()}}>prison break</Text></View>)} */}
+    {visible&&( <View><Text style={{backgroundColor:'blue'}} onPress={()=>{toggler()}}>prison break</Text></View>)}
 </View>
    ) 
 }

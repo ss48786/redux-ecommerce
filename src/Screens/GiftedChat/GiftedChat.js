@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {connect} from 'react-redux';
-import MyLoader from '../../Components/MyLoader';
+import Loader from '../../Components/Loader';
 import imagePath from '../../constants/imagePath';
 import navigationString from '../../constants/navigationString';
 import actions from '../../redux/actions';

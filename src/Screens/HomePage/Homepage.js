@@ -261,7 +261,7 @@ dispatch({
   
   }
     renderItem = ({item}) => {
-      
+     
       return (
         <View>
         <TouchableOpacity onPress={()=>this.oncheck(item.id)}>
@@ -300,6 +300,7 @@ dispatch({
     render() {
       const { productsArray, item, count } = this.state;
       const { navigation } = this.props;
+      console.log(productsArray,"products array in home page")
   
       return (
         <SafeAreaView style={{ flex: 1 }}>

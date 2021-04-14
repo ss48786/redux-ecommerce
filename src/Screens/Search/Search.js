@@ -19,7 +19,7 @@ import {color} from 'react-native-reanimated';
 import imagePath from '../../constants/imagePath';
 import Geolocation from 'react-native-geolocation-service';
 import {locationPermission} from '../../utils/permission';
-import MyLoader from '../../Components/MyLoader';
+import Loader from '../../Components/Loader';
 import fontFamily from '../../styles/fontFamily';
 import styles from './styles';
 import store from '../../redux/store';
@@ -153,13 +153,14 @@ export default class Search extends Component {
       });
   };
 
-  clearUserData=()=>{
-    dispatch({
-      type:types.LOGOUT,
+  // clearUserData=()=>{
+  //   dispatch({
+  //     type:types.LOGOUT,
       
      
-    })
-  }
+  //   })
+  // }
+
 
   renderItem = ({item}) => {
     return (
@@ -195,7 +196,7 @@ export default class Search extends Component {
     return (
       <View style={styles.viewsearchreturn}>
         <View>
-          <TouchableOpacity onPress={()=>this.clearUserData()}>
+          <TouchableOpacity onPress={()=>actions.logOut()}>
         <Text style={{fontSize: 40, fontFamily: fontFamily.futuraHeavyBt}}>
            Log Out{' '}
           </Text>
@@ -248,7 +249,7 @@ export default class Search extends Component {
             renderItem={this.renderItem}
             bounces={true}
           />
-          <MyLoader iscorrect={iscorrect} styleatsearchpage={{marginTop: 50}} />
+          <Loader iscorrect={iscorrect} styleatsearchpage={{marginTop: 50}} />
           {/* <MyLoader iscorrect={iscorrect} styleatsearchpage={{ marginTop:50 }} /> */}
         </View>
       </View>

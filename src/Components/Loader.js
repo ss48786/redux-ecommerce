@@ -1,6 +1,6 @@
 import React from "react";
 import {Text, View,ActivityIndicator,StyleSheet} from "react-native";
- function MyLoader({iscorrect,styleatsearchpage}) {
+ function Loader({iscorrect,styleatsearchpage}) {
     if (iscorrect) {
         return (
             
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
    
   });
 
-  export default MyLoader;
+  export default Loader;

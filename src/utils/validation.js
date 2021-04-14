@@ -9,6 +9,7 @@ const checkEmpty = (val, key) => {
 };
 
 const checkMinLength = (val, minLength, key) => {
+	
 	if (val.trim().length < minLength) {
 		return `Please enter valid ${key}`;
 	} else {

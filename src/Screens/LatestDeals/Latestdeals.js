@@ -19,7 +19,7 @@ import Button from "../../Components/Button";
 import actions from "../../redux/actions";
 import { showMessage, errorMessage } from "react-native-flash-message";
 import { connect } from "react-redux";
-import MyLoader from "../../Components/MyLoader";
+import Loader from "../../Components/Loader";
 import fontFamily from "../../styles/fontFamily";
 import colors from "../../styles/colors";
 import imagePath from "../../constants/imagePath";
@@ -277,7 +277,7 @@ class Latestdeals extends Component {
           bounces={false}
         />
         {/* <Text>{infinitearray[0].bio}</Text> */}
-        <MyLoader iscorrect={iscorrect} />
+        <Loader iscorrect={iscorrect} />
 
 
 

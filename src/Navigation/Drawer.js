@@ -6,7 +6,7 @@ import navigationString from "../constants/navigationString";
 import { createStackNavigator } from "@react-navigation/stack";
 import Detailspage from "../Screens/Detailspage/Detailspage";
 import Cartpage from "../Screens/Cartpage/Cartpage";
-import Drawer_Content from "./Drawer_Content";
+import Drawer_Content from "../Components/Drawer_Content";
 import { NavigationContainer } from "@react-navigation/native";
 
 

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import navigationString from "../constants/navigationString";
 import GiftedChat, { Gifted } from "../Screens/GiftedChat/GiftedChat";
-import TabRoutes from "./TabRoutes";
+import TabRoutes from "../Navigation/TabRoutes";
 
 
 

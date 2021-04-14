@@ -16,7 +16,7 @@ import actions from '../../redux/actions';
 import {connect} from 'react-redux';
 import {showMessage} from 'react-native-flash-message';
 import socketServices from '../../utils/socketService';
-import { SOCKET_STRINGS } from '../../constants/socketStrings';
+import { SOCKET_STRINGS } from '../../constants/socketString';
 import imagePath from '../../constants/imagePath';
 
 class Chatcard extends Component {
