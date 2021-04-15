@@ -136,6 +136,6 @@ let query=`?coordinates=[${long},${lat}]`;
 
     export function logOut(){
       dispatch({
-        types:types.LOGOUT
+        type:types.LOGOUT
       })
     }

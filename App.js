@@ -19,7 +19,7 @@ import { Provider } from 'react-redux';
 import { getUserData } from './src/utils/Utils';
 import store from './src/redux/store';
 import types from './src/redux/types';
-import SplashScreen from 'react-native-splash-screen';
+  import SplashScreen from 'react-native-splash-screen';
 import {getFCMToken} from "./src/utils/pushNotification"
 import socketServices from './src/utils/socketService';
 
@@ -29,7 +29,7 @@ import socketServices from './src/utils/socketService';
 
 
 
-const {dispatch}=store;
+ const {dispatch}=store;
 
 class App extends Component {
 
@@ -39,6 +39,9 @@ class App extends Component {
 
     }
   }
+  // componentDidMount(){
+  //   SplashScreen.hide();
+  // }
 
 
   componentDidMount() {
@@ -83,7 +86,7 @@ class App extends Component {
         <FlashMessage position="top" />
       </Provider>
 
-      //  <View><Text>hkvhggg</Text></View>
+        // <View><Text>hkvhggg</Text></View>
     )
   }
 }

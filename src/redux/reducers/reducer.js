@@ -1,7 +1,7 @@
 import imagePath from '../../constants/imagePath';
 import navigationString from '../../constants/navigationString';
 import types from '../../redux/types';
-import {clearUserData} from "../../utils/Utils"
+ import {clearUserData} from "../../utils/Utils"
 const INITIAL_STATE = {
   myarray: [],
   selecteditem: '',
